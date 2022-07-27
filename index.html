@@ -72,15 +72,14 @@
 		});
 
 		$('.process').click(function() {
-			$('#resultTableBody').empty();
 			charactorList();
 			makeParty();
 			match();
+			$('#resultTableBody').empty();
 			raids.forEach(function(raid, idx){
 				$('#resultTableBody').append(buildRaidHtml(raid, idx));
 								
 			});
-			$('.process').hide();
 		});
 
 	});

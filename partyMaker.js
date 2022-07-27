@@ -21,7 +21,7 @@
 		
 		if(charalist.length>0){
 			$('#resultDiv').show();
-			$('#charaDiv').hide();
+			//$('#charaDiv').hide();
 		}
 	}
 	
@@ -55,6 +55,7 @@ function match(){
 	});
 	
 	console.log(partys);
+	strong = 0;
 	weak = charalist.length-1;
 	
 	//1번멤버 배정
