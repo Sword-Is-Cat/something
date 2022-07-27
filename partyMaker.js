@@ -21,7 +21,7 @@
 		
 		if(charalist.length>0){
 			$('#resultDiv').show();
-			//$('#charaDiv').hide();
+			$('#charaDiv').hide();
 		}
 	}
 	
