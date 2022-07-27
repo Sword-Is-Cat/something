@@ -12,10 +12,17 @@
 		</div>
 
 		<div id='charaDiv'>
+		<!--  
 			<div>
 				<input id='info' type='text' class='input_text'
 					style='width: 600px;' placeholder='캐릭명/항마' />
 				<button id='addAcc'>캐릭추가</button>
+			</div>
+		-->
+			<div>
+				<textarea id='massInfo' class='input_text'
+					style='width: 600px;height:300px;' placeholder='[오후 8:16] 고냥: 검은고냥 2.0'></textarea>
+				<button id='massAdd'>디코텍스트추가</button>
 			</div>
 			<div>
 				<ol id='accRoot'>
@@ -70,6 +77,17 @@
 			if(evt.keyCode == 13){
 				addChara();
 			}
+		});
+		
+		$('#massAdd').click(function(){
+			let fullStr = $('#massInfo').val().trim();
+			$('#massInfo').val('');
+			let strArr = fullStr.split('\n');
+			strArr.forEach(function(str){
+				let arr = str.split(' ');
+				if(arr.length > 4)
+					$('#accRoot').append(newCharaHtml(arr[3], arr[4]));
+			});
 		});
 
 		$('.process').click(function() {
