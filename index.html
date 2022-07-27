@@ -23,6 +23,7 @@
 				<textarea id='massInfo' class='input_text'
 					style='width: 600px;height:300px;' placeholder='[오후 8:16] 고냥: 검은고냥 2.0'></textarea>
 				<button id='massAdd'>디코텍스트추가</button>
+				<button id='example'>예제입력</button>
 			</div>
 			<div>
 				<ol id='accRoot'>
@@ -88,6 +89,12 @@
 				if(arr.length > 4)
 					$('#accRoot').append(newCharaHtml(arr[3], arr[4]));
 			});
+		});
+		
+		$('#example').click(function(){
+			let ex = '[오후 8:16] 고냥: 검은고냥 2.0\n[오후 8:16] 고냥: 수라고냥 1.8\n[오후 8:16] 고냥: 크루고냥 1.7\n[오후 8:16] 고냥: 예제고냥 1.6\n[오후 8:16] 고냥: 이런고냥 1.1';
+			$('#massInfo').val(ex);
+			
 		});
 
 		$('.process').click(function() {
