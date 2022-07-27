@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>DNFM PartyMaker</title>
+</head>
+<link type="text/css" rel="stylesheet" href="default.css" />
+<body>
+	<div>
+		<div>
+			<p class="font30 tcenter">DNFM PartyMaker</p>
+		</div>
+
+		<div id='charaDiv'>
+			<div>
+				<input id='info' type='text' class='input_text'
+					style='width: 600px;' placeholder='캐릭명/항마' />
+				<button id='addAcc'>캐릭추가</button>
+			</div>
+			<div>
+				<ol id='accRoot'>
+				</ol>
+			</div>
+			<div class='tcenter'>
+				<button class='process'>파티구성</button>
+			</div>
+		</div>
+		<div id='resultDiv' style='display: none;'>
+			<p class='font25 tcenter'>구성결과</p>
+			<table id='resultTable' cellspacing="0" cellpadding="0" border="0" summary="게시판 리스트">
+				<colgroup>
+					<col width='40%'>
+					<col width='10%'>
+					<col width='40%'>
+					<col width='10%'>
+				</colgroup>
+				<thead></thead>
+				<tbody id='resultTableBody'></tbody>
+			</table>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="partyMaker.js"></script>
+<script type="text/javascript" src="objectMaker.js"></script>
+<script type="text/javascript" src="htmlMaker.js"></script>
+<script type="text/javascript">
+	let termCnt = 1;
+	let charalist;
+
+	$(function() {
+
+		$('input[name=termCnt]').change(function() {
+			termCnt = $('input[name=termCnt]:checked').val();
+		});
+
+		$('#addAcc').click(function() {
+			let info = $('#info').val().replace(/[^a-zA-Zㄱ-힣0-9.]+/g, '|');
+			if (info) {
+				let arr = (info+'|1.5').split('|');
+				$('#accRoot').append(newCharaHtml(arr[0], arr[1]));
+			} else
+				$('#accRoot').append(newCharaHtml());
+
+			$('#info').val('');
+		});
+
+		$('.process').click(function() {
+			$('#resultTableBody').empty();
+			charactorList();
+			makeParty();
+			match();
+			raids.forEach(function(raid, idx){
+				$('#resultTableBody').append(buildRaidHtml(raid, idx));
+								
+			});
+		});
+
+	});
+
+	function addChara(btn) {
+		$(btn).siblings('.charalist').append(newCharaHtml());
+	}
+</script>
+</html>
