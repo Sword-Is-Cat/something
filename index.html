@@ -64,6 +64,12 @@
 
 			$('#info').val('');
 		});
+		
+		$('#info').keyup(function(evt){
+			if(evt.keyCode == 13){
+				addChara();
+			}
+		});
 
 		$('.process').click(function() {
 			$('#resultTableBody').empty();
@@ -78,9 +84,18 @@
 		});
 
 	});
+	
+	
 
-	function addChara(btn) {
-		$(btn).siblings('.charalist').append(newCharaHtml());
+	function addChara() {
+		let info = $('#info').val().replace(/[^a-zA-Zㄱ-힣0-9.]+/g, '|');
+		if (info) {
+			let arr = (info+'|1.5').split('|');
+			$('#accRoot').append(newCharaHtml(arr[0], arr[1]));
+		} else
+			$('#accRoot').append(newCharaHtml());
+
+		$('#info').val('');
 	}
 </script>
 </html>
