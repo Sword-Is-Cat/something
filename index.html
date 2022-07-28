@@ -58,7 +58,7 @@
 <script type="text/javascript">
 	let termCnt = 1;
 	let charalist;
-	
+
 	let debug = false;
 
 	$(function() {
@@ -81,22 +81,22 @@
 
 			let fullStr = $('#massInfo').val().trim();
 			$('#massInfo').val('');
-			
-			if(fullStr){
 
-			let strArr = fullStr.split('\n');
+			if (fullStr) {
 
-			strArr.forEach(function(str) {
+				let strArr = fullStr.split('\n');
 
-				let arr = str.trim().split(': ');
-				let charaStr = arr[arr.length - 1].trim();
-				parseCharaStr(charaStr);
-				/*
-				 arr = arr[arr.length - 1].trim().split(' ');
-				 if (arr.length > 1)
-				 $('#accRoot').append(newCharaHtml(arr[0], arr[1]));
-				 */
-			});
+				strArr.forEach(function(str) {
+
+					let arr = str.trim().split(': ');
+					let charaStr = arr[arr.length - 1].trim();
+					parseCharaStr(charaStr);
+					/*
+					 arr = arr[arr.length - 1].trim().split(' ');
+					 if (arr.length > 1)
+					 $('#accRoot').append(newCharaHtml(arr[0], arr[1]));
+					 */
+				});
 			}
 		});
 
@@ -134,7 +134,8 @@
 
 	function parseCharaStr(str) {
 
-		if(debug)console.log(str);
+		if (debug)
+			console.log(str);
 		let arr = str.trim().replace(/[^a-zA-Zㄱ-힣0-9.]+/g, ' ').split(' ');
 		let name = arr[0];
 		let power;

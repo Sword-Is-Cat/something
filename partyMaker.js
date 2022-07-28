@@ -58,7 +58,7 @@ function match(){
 	strong = 0;
 	weak = charalist.length-1;
 	
-	//1번멤버 배정
+	/*//1번멤버 배정
 	partys.forEach(function(party){
 		party.members.push(getStrong());
 	});
@@ -80,7 +80,39 @@ function match(){
 			//풀파티(3명)이 아니면 한명씩 넣어줌
 			party.members.push(getStrong());
 		}
-	});
+	});*/
+	
+	let idx = 0;
+	
+	//1번멤버 배정
+	//for(let idx = 0 ; idx<partys.length ; idx++){
+	while(idx<partys.length){
+		let mem = partys[idx++].members;
+		mem.push(getStrong());
+		
+	}
+	
+	//2번멤버 배정 역순으로 돌면서 1번멤버 확인하여 버스기사면 약한사람, 아니면 센사람 배정
+	//for(let idx = partys.length-1 ; idx>=0 ; idx--){
+	while(idx>0){
+		let mem = partys[--idx].members;
+		if(mem[0] && mem[0].power == 10)
+			mem.push(getWeak());
+		else
+			mem.push(getStrong());
+		
+	}
+	
+	//마지막 멤버 배정
+	//for(let idx = 0 ; idx<partys.length ; idx++){
+	while(idx<partys.length){
+		let mem = partys[idx++].members;
+		if(mem[0] && mem[0].power == 10)
+			mem.push(getWeak());
+		else
+			mem.push(getStrong());
+		
+	}
 	
 	if(debug)console.log('result raids');
 	if(debug)console.log(raids);
