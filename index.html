@@ -150,13 +150,20 @@
 			}
 		});
 
+		let name;
+		if (name1) {
+			name = name1 + '_' + name2;
+		} else {
+			name = name2 ? name2 : '';
+		}
+
 		while (power >= 1)
 			power /= 10;
 
 		power = Math.floor(power * 100) / 10;
 
-		console.log('parsed [ ' + name1 + '_' + name2 + ' / ' + power + ' ]');
-		$('#accRoot').append(newCharaHtml(name1 + '_' + name2, power));
+		console.log('parsed [ ' + name + ' / ' + power + ' ]');
+		$('#accRoot').append(newCharaHtml(name, power));
 	}
 
 	function radioChange(oThis) {
