@@ -48,8 +48,8 @@
 				<thead></thead>
 				<tbody id='resultTableBody'></tbody>
 			</table>
-			<div style='height: 100px;'></div>
 		</div>
+		<div style='height: 100px;'></div>
 	</div>
 </body>
 <script type="text/javascript" src="jquery-1.11.0.min.js"></script>
@@ -158,10 +158,9 @@
 		console.log('parsed [ ' + name + ' / ' + power + ' ]');
 		$('#accRoot').append(newCharaHtml(name, power));
 	}
-	
-	function radioChange(oThis){
+
+	function radioChange(oThis) {
 		$(oThis).parent().parent().removeClass('power');
 	}
-	
 </script>
 </html>
