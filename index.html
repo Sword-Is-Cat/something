@@ -58,6 +58,8 @@
 <script type="text/javascript">
 	let termCnt = 1;
 	let charalist;
+	
+	let debug = false;
 
 	$(function() {
 
@@ -66,14 +68,7 @@
 		});
 
 		$('#addAcc').click(function() {
-			let info = $('#info').val().replace(/[^a-zA-Zㄱ-힣0-9.]+/g, '|');
-			if (info) {
-				let arr = (info + '|1.5').split('|');
-				$('#accRoot').append(newCharaHtml(arr[0], arr[1]));
-			} else
-				$('#accRoot').append(newCharaHtml());
-
-			$('#info').val('');
+			addChara();
 		});
 
 		$('#info').keyup(function(evt) {
@@ -86,26 +81,35 @@
 
 			let fullStr = $('#massInfo').val().trim();
 			$('#massInfo').val('');
+			
+			if(fullStr){
 
 			let strArr = fullStr.split('\n');
 
 			strArr.forEach(function(str) {
 
 				let arr = str.trim().split(': ');
-
-				arr = arr[arr.length - 1].trim().split(' ');
-				if (arr.length > 1)
-					$('#accRoot').append(newCharaHtml(arr[0], arr[1]));
+				let charaStr = arr[arr.length - 1].trim();
+				parseCharaStr(charaStr);
+				/*
+				 arr = arr[arr.length - 1].trim().split(' ');
+				 if (arr.length > 1)
+				 $('#accRoot').append(newCharaHtml(arr[0], arr[1]));
+				 */
 			});
+			}
 		});
 
-		$('#example')
-				.click(
-						function() {
-							let ex = '[오후 8:16] 고냥: 검은고냥 2.0\n[오후 8:16] 고냥: 수라고냥 1.8\n[오후 8:16] 고냥: 크루고냥 1.7\n[오후 8:16] 고냥: 예제고냥 1.6\n[오후 8:16] 고냥: 이런고냥 1.1';
-							$('#massInfo').val(ex);
+		$('#example').click(
+				function() {
+					let ex = '[오후 8:16] 고냥: 검은고냥 2.0\n'
+							+ '[오후 8:16] 고냥: 수라고냥 1.8\n'
+							+ '[오후 8:16] 고냥: 크루고냥 1.7\n'
+							+ '[오후 8:16] 고냥: 예제고냥 1.6\n'
+							+ '[오후 8:16] 고냥: 이런고냥 1.1';
+					$('#massInfo').val(ex);
 
-						});
+				});
 
 		$('.process').click(function() {
 			charactorList();
@@ -121,14 +125,39 @@
 	});
 
 	function addChara() {
-		let info = $('#info').val().replace(/[^a-zA-Zㄱ-힣0-9.]+/g, '|');
-		if (info) {
-			let arr = (info + '|1.5').split('|');
-			$('#accRoot').append(newCharaHtml(arr[0], arr[1]));
-		} else
-			$('#accRoot').append(newCharaHtml());
+
+		let info = $('#info').val().replace(/[^a-zA-Zㄱ-힣0-9.]+/g, '/');
+		parseCharaStr(info);
 
 		$('#info').val('');
+	}
+
+	function parseCharaStr(str) {
+
+		if(debug)console.log(str);
+		let arr = str.trim().replace(/[^a-zA-Zㄱ-힣0-9.]+/g, ' ').split(' ');
+		let name = arr[0];
+		let power;
+
+		let doing = true;
+
+		arr.forEach(function(obj) {
+			if (doing) {
+				if (parseFloat(obj)) {
+					power = parseFloat(obj);
+					doing = false;
+				} else
+					name = obj;
+			}
+		});
+
+		while (power >= 1)
+			power /= 10;
+
+		power = Math.floor(power * 100) / 10;
+
+		console.log('parsed [ ' + name + ' / ' + power + ' ]');
+		$('#accRoot').append(newCharaHtml(name, power));
 	}
 </script>
 </html>

@@ -1,6 +1,6 @@
 	function charactorList() {
 		
-		console.log('charactorList make');
+		if(debug)console.log('charactorList make');
 		charalist = [];
 
 		$('.chara').each(function(idx, chara) {
@@ -17,7 +17,7 @@
 		});
 		
 		charalist.sort((a,b)=>b.power-a.power);
-		console.log(charalist);
+		if(debug)console.log(charalist);
 		
 		if(charalist.length>0){
 			$('#resultDiv').show();
@@ -29,7 +29,7 @@ let raids;
 
 function makeParty(){
 	
-	console.log('makeParty');
+	if(debug)console.log('makeParty');
 	raids = [];
 	
 	let cntMember = charalist.length;
@@ -39,7 +39,7 @@ function makeParty(){
 		raids.push(newRaid());
 	}
 	
-	console.log(raids);
+	if(debug)console.log(raids);
 	
 }
 
@@ -48,13 +48,13 @@ let weak = -1;
 
 function match(){
 	
-	console.log('party match');
+	if(debug)console.log('party match');
 	let partys = [];
 	raids.forEach(function(raid){
 		partys.push(...raid.partys);
 	});
 	
-	console.log(partys);
+	if(debug)console.log(partys);
 	strong = 0;
 	weak = charalist.length-1;
 	
@@ -82,8 +82,8 @@ function match(){
 		}
 	});
 	
-	console.log('result raids');
-	console.log(raids);
+	if(debug)console.log('result raids');
+	if(debug)console.log(raids);
 }
 
 function getStrong(){
