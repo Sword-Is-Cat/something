@@ -14,7 +14,8 @@
 		<div id='charaDiv'>
 			<div>
 				<input id='info' type='text' class='input_text'
-					style='width: 600px;' placeholder='개구몽 아수라 1.8 / 도그홀 17835 웨펀 / 메카닉 스탑소 2' />
+					style='width: 600px;'
+					placeholder='개구몽 아수라 1.8 / 도그홀 17835 웨펀 / 메카닉 스탑소 2' />
 				<button id='addAcc'>단건추가</button>
 			</div>
 			<div>
@@ -24,7 +25,7 @@
 			</div>
 			<div class='tcenter'>
 				<button id='massAdd'>디코텍스트추가</button>
-				<button id='example' style='display:none;'>예제입력</button>
+				<button id='example' style='display: none;'>예제입력</button>
 			</div>
 			<div>
 				<ol id='accRoot'>
@@ -157,5 +158,10 @@
 		console.log('parsed [ ' + name + ' / ' + power + ' ]');
 		$('#accRoot').append(newCharaHtml(name, power));
 	}
+	
+	function radioChange(oThis){
+		$(oThis).parent().parent().removeClass('power');
+	}
+	
 </script>
 </html>

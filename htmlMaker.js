@@ -56,13 +56,13 @@ function newCharaHtml(charaName, power) {
 		powerArr[idx] = true;
 	}
 
-	let html = '<li id="' + charaId + '" class="chara">' + '<span>캐릭명</span>'
+	let html = '<li id="' + charaId + '" class="chara '+(power?'':'power')+'">' + '<span>캐릭명</span>'
 			+ '<input id="' + charaId
 			+ 'name" type="text" class="input_text" value="'
 			+ (charaName ? charaName : '') + '"/>' + '<span>항마력</span>';
 
 	for (let i = 0; i < textArr.length; i++)
-		html += '<label><input type="radio" name="' + charaId + 'po" value="'
+		html += '<label><input type="radio" name="' + charaId + 'po" onchange="radioChange(this)" value="'
 				+ valueArr[i] + '" ' + (powerArr[i] ? 'checked' : '') + '>'
 				+ textArr[i] + '</label>';
 
