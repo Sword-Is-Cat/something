@@ -14,13 +14,13 @@
 		<div id='charaDiv'>
 			<div>
 				<input id='info' type='text' class='input_text'
-					style='width: 600px;' placeholder='검은고냥 2.0' />
+					style='width: 600px;' placeholder='개구몽 1.8 / 도그홀 17835 / 스탑소 2' />
 				<button id='addAcc'>단건추가</button>
 			</div>
 			<div>
 				<textarea id='massInfo' class='input_text'
 					style='display: block; width: 700px; height: 300px;'
-					placeholder='[오후 8:16] 고냥: 검은고냥 2.0'></textarea>
+					placeholder='[오후 8:16] 아이디: 개구몽 1.8'></textarea>
 			</div>
 			<div class='tcenter'>
 				<button id='massAdd'>디코텍스트추가</button>
@@ -56,8 +56,11 @@
 <script type="text/javascript" src="objectMaker.js"></script>
 <script type="text/javascript" src="htmlMaker.js"></script>
 <script type="text/javascript">
+
 	let termCnt = 1;
 	let charalist;
+
+	let overCutLine = 1.9;
 
 	let debug = false;
 
@@ -91,22 +94,17 @@
 					let arr = str.trim().split(': ');
 					let charaStr = arr[arr.length - 1].trim();
 					parseCharaStr(charaStr);
-					/*
-					 arr = arr[arr.length - 1].trim().split(' ');
-					 if (arr.length > 1)
-					 $('#accRoot').append(newCharaHtml(arr[0], arr[1]));
-					 */
 				});
 			}
 		});
 
 		$('#example').click(
 				function() {
-					let ex = '[오후 8:16] 고냥: 검은고냥 2.0\n'
-							+ '[오후 8:16] 고냥: 수라고냥 1.8\n'
-							+ '[오후 8:16] 고냥: 크루고냥 1.7\n'
-							+ '[오후 8:16] 고냥: 예제고냥 1.6\n'
-							+ '[오후 8:16] 고냥: 이런고냥 1.1';
+					let ex = '[오후 8:16] 트수1: 개구몽 1.8\n'
+							+ '[오후 8:16] 트수2: 도그홀 17835\n'
+							+ '[오후 8:16] 트수3: 스탑소 2\n'
+							+ '[오후 8:16] 트수4: 버스승객 1.2\n'
+							+ '[오후 8:16] 트수5: 무임승차 1.1';
 					$('#massInfo').val(ex);
 
 				});
