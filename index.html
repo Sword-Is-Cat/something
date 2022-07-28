@@ -56,7 +56,6 @@
 <script type="text/javascript" src="objectMaker.js"></script>
 <script type="text/javascript" src="htmlMaker.js"></script>
 <script type="text/javascript">
-
 	let termCnt = 1;
 	let charalist;
 
@@ -100,9 +99,9 @@
 
 		$('#example').click(
 				function() {
-					let ex = '[오후 8:16] 트수1: 개구몽 1.8\n'
-							+ '[오후 8:16] 트수2: 도그홀 17835\n'
-							+ '[오후 8:16] 트수3: 스탑소 2\n'
+					let ex = '[오후 8:16] 트수1: 개구몽 길마 1.8\n'
+							+ '[오후 8:16] 트수2: 도그홀 17835 아수라\n'
+							+ '[오후 8:16] 트수3: 메카닉 스탑소 2\n'
 							+ '[오후 8:16] 트수4: 버스승객 1.2\n'
 							+ '[오후 8:16] 트수5: 무임승차 1.1';
 					$('#massInfo').val(ex);
@@ -135,18 +134,18 @@
 		if (debug)
 			console.log(str);
 		let arr = str.trim().replace(/[^a-zA-Zㄱ-힣0-9.]+/g, ' ').split(' ');
-		let name = arr[0];
+		let name = '';
 		let power;
 
-		let doing = true;
-
 		arr.forEach(function(obj) {
-			if (doing) {
-				if (parseFloat(obj)) {
-					power = parseFloat(obj);
-					doing = false;
-				} else
-					name = obj;
+			if (parseFloat(obj)) {
+				power = parseFloat(obj);
+			} else {
+				if (obj) {
+					if (name.length > 0)
+						name += '_';
+					name += obj;
+				}
 			}
 		});
 
