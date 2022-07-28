@@ -12,16 +12,17 @@
 		</div>
 
 		<div id='charaDiv'>
-		<!--  
 			<div>
 				<input id='info' type='text' class='input_text'
-					style='width: 600px;' placeholder='캐릭명/항마' />
-				<button id='addAcc'>캐릭추가</button>
+					style='width: 600px;' placeholder='검은고냥 2.0' />
+				<button id='addAcc'>단건추가</button>
 			</div>
-		-->
 			<div>
 				<textarea id='massInfo' class='input_text'
-					style='width: 600px;height:300px;' placeholder='[오후 8:16] 고냥: 검은고냥 2.0'></textarea>
+					style='display: block; width: 700px; height: 300px;'
+					placeholder='[오후 8:16] 고냥: 검은고냥 2.0'></textarea>
+			</div>
+			<div class='tcenter'>
 				<button id='massAdd'>디코텍스트추가</button>
 				<button id='example'>예제입력</button>
 			</div>
@@ -35,7 +36,8 @@
 		</div>
 		<div id='resultDiv' style='display: none;'>
 			<p class='font25 tcenter'>구성결과</p>
-			<table id='resultTable' cellspacing="0" cellpadding="0" border="0" summary="게시판 리스트">
+			<table id='resultTable' cellspacing="0" cellpadding="0" border="0"
+				summary="게시판 리스트">
 				<colgroup>
 					<col width='40%'>
 					<col width='10%'>
@@ -45,7 +47,7 @@
 				<thead></thead>
 				<tbody id='resultTableBody'></tbody>
 			</table>
-			<div style='height:300px;'></div>
+			<div style='height: 100px;'></div>
 		</div>
 	</div>
 </body>
@@ -66,56 +68,62 @@
 		$('#addAcc').click(function() {
 			let info = $('#info').val().replace(/[^a-zA-Zㄱ-힣0-9.]+/g, '|');
 			if (info) {
-				let arr = (info+'|1.5').split('|');
+				let arr = (info + '|1.5').split('|');
 				$('#accRoot').append(newCharaHtml(arr[0], arr[1]));
 			} else
 				$('#accRoot').append(newCharaHtml());
 
 			$('#info').val('');
 		});
-		
-		$('#info').keyup(function(evt){
-			if(evt.keyCode == 13){
+
+		$('#info').keyup(function(evt) {
+			if (evt.keyCode == 13) {
 				addChara();
 			}
 		});
-		
-		$('#massAdd').click(function(){
+
+		$('#massAdd').click(function() {
+
 			let fullStr = $('#massInfo').val().trim();
 			$('#massInfo').val('');
+
 			let strArr = fullStr.split('\n');
-			strArr.forEach(function(str){
-				let arr = str.split(' ');
-				if(arr.length > 4)
-					$('#accRoot').append(newCharaHtml(arr[3], arr[4]));
+
+			strArr.forEach(function(str) {
+
+				let arr = str.trim().split(': ');
+
+				arr = arr[arr.length - 1].trim().split(' ');
+				if (arr.length > 1)
+					$('#accRoot').append(newCharaHtml(arr[0], arr[1]));
 			});
 		});
-		
-		$('#example').click(function(){
-			let ex = '[오후 8:16] 고냥: 검은고냥 2.0\n[오후 8:16] 고냥: 수라고냥 1.8\n[오후 8:16] 고냥: 크루고냥 1.7\n[오후 8:16] 고냥: 예제고냥 1.6\n[오후 8:16] 고냥: 이런고냥 1.1';
-			$('#massInfo').val(ex);
-			
-		});
+
+		$('#example')
+				.click(
+						function() {
+							let ex = '[오후 8:16] 고냥: 검은고냥 2.0\n[오후 8:16] 고냥: 수라고냥 1.8\n[오후 8:16] 고냥: 크루고냥 1.7\n[오후 8:16] 고냥: 예제고냥 1.6\n[오후 8:16] 고냥: 이런고냥 1.1';
+							$('#massInfo').val(ex);
+
+						});
 
 		$('.process').click(function() {
 			charactorList();
 			makeParty();
 			match();
 			$('#resultTableBody').empty();
-			raids.forEach(function(raid, idx){
+			raids.forEach(function(raid, idx) {
 				$('#resultTableBody').append(buildRaidHtml(raid, idx));
-								
+
 			});
 		});
 
 	});
-	
-	
 
 	function addChara() {
 		let info = $('#info').val().replace(/[^a-zA-Zㄱ-힣0-9.]+/g, '|');
 		if (info) {
-			let arr = (info+'|1.5').split('|');
+			let arr = (info + '|1.5').split('|');
 			$('#accRoot').append(newCharaHtml(arr[0], arr[1]));
 		} else
 			$('#accRoot').append(newCharaHtml());
