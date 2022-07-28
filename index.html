@@ -135,7 +135,8 @@
 		if (debug)
 			console.log(str);
 		let arr = str.trim().replace(/[^a-zA-Zㄱ-힣0-9.]+/g, ' ').split(' ');
-		let name = '';
+		let name1;
+		let name2;
 		let power;
 
 		arr.forEach(function(obj) {
@@ -143,9 +144,8 @@
 				power = parseFloat(obj);
 			} else {
 				if (obj) {
-					if (name.length > 0)
-						name += '_';
-					name += obj;
+					name1 = name2;
+					name2 = obj;
 				}
 			}
 		});
@@ -155,8 +155,8 @@
 
 		power = Math.floor(power * 100) / 10;
 
-		console.log('parsed [ ' + name + ' / ' + power + ' ]');
-		$('#accRoot').append(newCharaHtml(name, power));
+		console.log('parsed [ ' + name1 + '_' + name2 + ' / ' + power + ' ]');
+		$('#accRoot').append(newCharaHtml(name1 + '_' + name2, power));
 	}
 
 	function radioChange(oThis) {

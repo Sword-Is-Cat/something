@@ -51,7 +51,10 @@ function match(){
 	if(debug)console.log('party match');
 	let partys = [];
 	raids.forEach(function(raid){
-		partys.push(...raid.partys);
+		partys.push(raid.partys[0]);
+	});
+	raids.forEach(function(raid){
+		partys.push(raid.partys[1]);
 	});
 	
 	if(debug)console.log(partys);
