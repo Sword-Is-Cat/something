@@ -43,19 +43,21 @@ function makeParty(){
 	
 }
 
-let strong = 0;
-let weak = -1;
+let strong;
+let weak;
 
 function match(){
 	
 	if(debug)console.log('party match');
 	let partys = [];
-	raids.forEach(function(raid){
-		partys.push(raid.partys[0]);
-	});
-	raids.forEach(function(raid){
-		partys.push(raid.partys[1]);
-	});
+	
+	for(let i = 0 ; i<raids.length ; i++){
+		partys.push(raids[i].partys[0]);
+	}
+	
+	for(let i = raids.length-1 ; i>=0 ; i--){
+		partys.push(raids[i].partys[1]);
+	}
 	
 	if(debug)console.log(partys);
 	strong = 0;

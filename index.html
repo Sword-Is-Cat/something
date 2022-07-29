@@ -91,7 +91,7 @@
 
 				strArr.forEach(function(str) {
 
-					let arr = str.trim().split(': ');
+					let arr = str.trim().split(':');
 					let charaStr = arr[arr.length - 1].trim();
 					parseCharaStr(charaStr);
 				});
@@ -134,28 +134,33 @@
 
 		if (debug)
 			console.log(str);
+
 		let arr = str.trim().replace(/[^a-zA-Zㄱ-힣0-9.]+/g, ' ').split(' ');
-		let name1;
-		let name2;
+
+		let nameArr = [];
+		let name;
 		let power;
 
 		arr.forEach(function(obj) {
-			if (parseFloat(obj)) {
-				power = parseFloat(obj);
+
+			let parsed = parseFloat(obj);
+
+			if (parsed) {
+				power = parsed;
 			} else {
 				if (obj) {
-					name1 = name2;
-					name2 = obj;
+					nameArr.push(obj);
 				}
 			}
 		});
 
-		let name;
-		if (name1) {
-			name = name1 + '_' + name2;
-		} else {
-			name = name2 ? name2 : '';
-		}
+		let length = nameArr.length;
+
+		if (length > 0)
+			name = nameArr[length - 1];
+
+		if (length > 1)
+			name = nameArr[length - 2] + '_' + name;
 
 		while (power >= 1)
 			power /= 10;
@@ -169,5 +174,35 @@
 	function radioChange(oThis) {
 		$(oThis).parent().parent().removeClass('power');
 	}
+	
+	let selected;
+	
+	function tdclick(oThis){
+		
+		let id = $(oThis).attr('id');
+		
+		if(selected){
+			
+			let $prev = $('#'+selected);
+			let $curr = $('#'+id);
+			
+			let prevname = $prev.text();
+			let prevpower = $prev.next().text();
+			
+			$prev.text($curr.text());
+			$prev.next().text($curr.next().text());
+			
+			$curr.text(prevname);
+			$curr.next().text(prevpower);
+			
+			$('.tdselect').removeClass('tdselect');
+			selected = null;
+		}else{
+			$(oThis).addClass('tdselect');
+			$(oThis).next().addClass('tdselect');
+			selected = id;
+		}
+	}
+	
 </script>
 </html>

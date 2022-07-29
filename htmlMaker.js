@@ -34,16 +34,10 @@ function newCharaHtml(charaName, power) {
 
 	if (power) {
 		/*
-		if (power < 1.5)
-			powerArr[0] = true;
-		else if (power > 1.8)
-			powerArr[5] = true;
-		else
-			for (let i = 0; i < textArr.length; i++) {
-				if (power == textArr[i])
-					powerArr[i] = true;
-			}
-		*/
+		 * if (power < 1.5) powerArr[0] = true; else if (power > 1.8)
+		 * powerArr[5] = true; else for (let i = 0; i < textArr.length; i++) {
+		 * if (power == textArr[i]) powerArr[i] = true; }
+		 */
 		let idx = 0;
 		for (let i = 0; i < valueArr.length; i++) {
 
@@ -56,15 +50,17 @@ function newCharaHtml(charaName, power) {
 		powerArr[idx] = true;
 	}
 
-	let html = '<li id="' + charaId + '" class="chara '+(power?'':'power')+'">' + '<span>캐릭명</span>'
+	let html = '<li id="' + charaId + '" class="chara '
+			+ (power ? '' : 'power') + '">' + '<span>캐릭명</span>'
 			+ '<input id="' + charaId
 			+ 'name" type="text" class="input_text" value="'
 			+ (charaName ? charaName : '') + '"/>' + '<span>항마력</span>';
 
 	for (let i = 0; i < textArr.length; i++)
-		html += '<label><input type="radio" name="' + charaId + 'po" onchange="radioChange(this)" value="'
-				+ valueArr[i] + '" ' + (powerArr[i] ? 'checked' : '') + '>'
-				+ textArr[i] + '</label>';
+		html += '<label><input type="radio" name="' + charaId
+				+ 'po" onchange="radioChange(this)" value="' + valueArr[i]
+				+ '" ' + (powerArr[i] ? 'checked' : '') + '>' + textArr[i]
+				+ '</label>';
 
 	html += '</li>';
 
@@ -121,11 +117,25 @@ function buildMemberHtml(member) {
 	let html = '';
 
 	if (member) {
-		html += '<td>' + (member.name == '' ? member.charaid : member.name)
-				+ '</td>';
-		html += '<td>'
-				+ (member.power == overCutLine ? '버스기사' : member.power == 0 ? '응애': member.power) 
-				+ '</td>';
+
+		let name;
+		let power;
+		let tdid = member.charaid + 'td';
+
+		if (member.name == '')
+			name = member.charaid;
+		else
+			name = member.name;
+
+		if (member.power == overCutLine)
+			power = '버스기사';
+		else if (member.power == 0)
+			power = '응애';
+		else
+			power = member.power;
+
+		html += '<td id="' + tdid + '" onclick="tdclick(this)">' + name + '</td>';
+		html += '<td>' + power + '</td>';
 
 	} else {
 		html += '<td colspan="2">빈자리</td>';
