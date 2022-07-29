@@ -135,12 +135,17 @@ function buildMemberHtml(member) {
 			power = member.power;
 
 		html += '<td id="' + tdid + '" onclick="tdclick(this)">' + name + '</td>';
-		html += '<td>' + power + '</td>';
+		html += '<td onclick="powerclick(this)">' + power + '</td>';
 
 	} else {
-		html += '<td colspan="2">빈자리</td>';
+		
+		let tdid = 'empty'+(emptyCnt++);
+		
+		html += '<td id="' + tdid + '" onclick="tdclick(this)">빈자리</td><td onclick="powerclick(this)"></td>';
 	}
 
 	return html;
 
 }
+
+let emptyCnt = 1;
