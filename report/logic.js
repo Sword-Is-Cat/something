@@ -26,6 +26,7 @@ function addRow(){
 			<label><input type='radio' name='prerank${idx}' key='prerank' onchange='radioChng(this)' value='소패'>소패</input></label>
 			<label><input type='radio' name='prerank${idx}' key='prerank' onchange='radioChng(this)' value='패왕'>패왕</input></label>
 			<label><input type='radio' name='prerank${idx}' key='prerank' onchange='radioChng(this)' value='투신'>투신</input></label>
+			<label><input type='radio' name='prerank${idx}' key='prerank' onchange='radioChng(this)' value='무신'>무신</input></label>
 			<br/>
 			현시즌
 			<label><input type='radio' name='currank${idx}' key='currank' onchange='radioChng(this)' value='달인'>달인</input></label>
@@ -33,6 +34,7 @@ function addRow(){
 			<label><input type='radio' name='currank${idx}' key='currank' onchange='radioChng(this)' value='소패'>소패</input></label>
 			<label><input type='radio' name='currank${idx}' key='currank' onchange='radioChng(this)' value='패왕'>패왕</input></label>
 			<label><input type='radio' name='currank${idx}' key='currank' onchange='radioChng(this)' value='투신'>투신</input></label>
+			<label><input type='radio' name='currank${idx}' key='currank' onchange='radioChng(this)' value='무신'>무신</input></label>
 		</li>`;
 	
 	$('#inputSection').append(html);
