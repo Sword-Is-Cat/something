@@ -5,12 +5,12 @@
 <title>DNFM guild resume</title>
 </head>
 <link type="text/css" rel="stylesheet" href="../default.css" />
-<script type="text/javascript" src="../jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="./logic.js"></script>
-<script type="text/javascript">
-	$(function(){
-		
-		btn_click();
+<script type="text/javascript" src="./jobData.js"></script>
+<script>
+	document.addEventListener("DOMContentLoaded", function(){
+		jobChange();
+		document.getElementById('job_1').onchange();
 	});
 </script>
 <body>
@@ -19,45 +19,43 @@
 			<p class="font30 tcenter">DNFM 길드가입 이력서</p>
 		</div>
 
-		<div id='charaDiv'>
-			<div>
-				<input id='info' type='text' class='input_text'
-					style='width: 600px;'
-					placeholder='개구몽 아수라 1.8 / 도그홀 17835 웨펀 / 메카닉 스탑소 2' />
-				<button id='addAcc'>단건추가</button>
-			</div>
-			<div>
-				<textarea id='massInfo' class='input_text'
-					style='display: block; width: 700px; height: 300px;'
-					placeholder='[오후 8:16] 아이디: 개구몽 아수라 1.8'></textarea>
-			</div>
-			<div class='tcenter'>
-				<button id='massAdd'>디코텍스트추가</button>
-				<button id='example' style='display: none;'>예제입력</button>
-			</div>
-			<div>
-				<ol id='accRoot'>
-				</ol>
-			</div>
-			<div class='tcenter'>
-				<button class='process'>파티구성</button>
-			</div>
-		</div>
-		<div id='resultDiv' style='display: none;'>
-			<p class='font25 tcenter'>구성결과</p>
-			<table id='resultTable' cellspacing="0" cellpadding="0" border="0"
-				summary="게시판 리스트">
+		<div>
+			<table cellspacing="0" cellpadding="0" border="0" summary="길드가입이력서">
 				<colgroup>
-					<col width='40%'>
-					<col width='10%'>
-					<col width='40%'>
-					<col width='10%'>
+					<col width="30%">
+					<col width="70%">
 				</colgroup>
 				<thead></thead>
-				<tbody id='resultTableBody'></tbody>
+				<tbody>
+					<tr>
+						<th>캐릭명</th>
+						<td style="text-align:left;"><input type="text" class="input_text" id='name' maxlength='20' oninput="this.value = this.value.replace(/[^0-9a-zA-zㄱ-힣]/g, '')"></input></td>
+					</tr>
+					<tr>
+						<th>직업</th>
+						<td style="text-align:left;">
+						<!--  
+							<input type='text' class='input_text' id='job' placeholder='직접입력'></input>
+						-->
+							<select id='job_1' class='input_text' onchange=jobChange(this.value)></select>
+							<select id='job_2' class='input_text' onchange=jobChange(this.value)></select>
+						</td>
+					</tr>
+					<tr>
+						<th>항마력</th>
+						<td style="text-align:left;"><input type="text" class="input_text" id='power' maxlength='8' oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"></input></td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
-		<div style='height: 100px;'></div>
+		<div>
+			<button onclick='javascript:btn_click()' id='addAcc'>복사</button>
+		</div>
+		<div>
+			
+		</div>
+	</div>
+
 	</div>
 </body>
 
