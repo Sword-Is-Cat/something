@@ -2,6 +2,8 @@
  * 
  */
 const copy = (text) => {
+	
+	console.log('copy: '+text);
   // 임시의 textarea 생성
   const $textarea = document.createElement("textarea");
 
@@ -22,6 +24,8 @@ const copy = (text) => {
 const btn_click = () =>{
 	
 	let text = '${name} \n ${job} \n ${power}';
+	
+	console.log('btnC: '+text);
 	
 	copy(text);
 	
