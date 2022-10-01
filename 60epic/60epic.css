@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+body div{width: 1000px;min-height:50px;}
+
+details div {
+	width: 850px;
+	height: 172px;
+	border: 2px solid;
+}
+
+details .bg {
+	background-image: url(./60epic.png);
+}
+
+details .type0 {
+	background-position: 0 -120px;
+}
+details .type1 {
+	background-position: 0 -292px;
+}
+details .type2 {
+	background-position: 0 -464px;
+}
+details .type3 {
+	background-position: 0 -636px;
+}
+details .type4 {
+	background-position: 0 -808px;
+}
+details .type5 {
+	background-position: 0 -980px;
+}
+details .type6 {
+	background-position: 0 -1145px;
+}
+details .type7 {
+ 	background-position: 0 -1306px;
+}
+details .type8 {
+	background-position: 0 -1466px;
+}
+details .type9 {
+	background-position: 0 -1636px;
+}
+details .type10 {
+	background-position: 0 -1806px;
+}
+details .type11 {
+	background-position: 0 -1980px;
+}
+details .type12 {
+	background-position: 0 -2154px;
+}
+details .type13 {
+	background-position: 0 -2326px;
+}
+details .type14 {
+	background-position: 0 -2500px;
+}
+details .type15 {
+	background-position: 0 -2670px;
+}
+details .type16 {
+	background-position: 0 -2856px;
+}
+details .type17 {
+	background-position: 0 -3030px;
+}
+details .type18 {
+	background-position: 0 -3200px;
+}
+details .type19 {
+	background-position: 0 -3382px;
+}
