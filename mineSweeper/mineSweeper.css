@@ -5,54 +5,53 @@ body div {
 }
 
 body {
-	margin:0;
+	margin: 0;
 	background-color: #DDDDDD;
 }
 
-ul, ol, li{
-	list-style:none;
+ul, ol, li {
+	list-style: none;
 }
 
-a{
+a {
 	text-decoration: none;
 }
 
-.lnb ul.depth_0, .lnb ul.depth_1{
+.lnb ul.depth_0, .lnb ul.depth_1 {
 	display: block !important;
 }
 
-.lnb ul.depth_0{
-	padding-inline-start:0;
+.lnb ul.depth_0 {
+	padding-inline-start: 0;
 	background: #888888;
 }
 
-.lnb ul{
-	padding-inline-start:20px;
+.lnb ul {
+	padding-inline-start: 20px;
 }
 
-.lnb ul li a{
+.lnb ul li a {
 	color: black;
 	font-size: 20px;
 }
 
-.lnb ul.depth_1 li a{
+.lnb ul.depth_1 li a {
 	font-weight: 600;
 }
 
-.lnb ul.depth_2 li a{
+.lnb ul.depth_2 li a {
 	font-weight: 400;
 }
 
-.lnb ul.depth_3 li a{
+.lnb ul.depth_3 li a {
 	font-weight: 200;
 }
 
-.lnb ul li{
+.lnb ul li {
 	width: 100%;
 	min-height: 30px;
 	padding: 3px;
 }
-
 
 .bodyWrapper div {
 	position: relative;
@@ -70,7 +69,7 @@ a{
 	width: 100%;
 }
 
-.bodyWrapper{
+.bodyWrapper {
 	width: 100%;
 	height: 100vh;
 }
@@ -80,7 +79,7 @@ a{
 	width: 300px;
 	height: 100vh;
 	backdrop-filter: contrast(0.2);
-	z-index:1;
+	z-index: 1;
 }
 
 .bodyWrapper .contentsBody {
@@ -91,14 +90,80 @@ a{
 
 .bodyWrapper .contents {
 	padding: 30px;
-	height: calc(100vh - 260px);
+	width: calc(100% - 60px);
+	height: calc(100vh - 60px);
 }
 
 .bodyWrapper .contents.on {
 	backdrop-filter: blur(12px);
 }
 
-.videoPlayer {
+.bodyWrapper .contents .iframeWrapper {
+	width: 100%;
+	margin: 0;
+}
+
+.bodyWrapper .contents .iframeWrapper .videoPlayer {
 	position: relative;
+}
+
+.bodyWrapper .contents .iframeWrapper .videoPlayer.single {
 	left: calc(50% - 480px);
+	top: calc(40vh - 270px);
+}
+
+.bodyWrapper .contents .iframeWrapper .videoPlayer.double {
+	left: 0;
+	top: 0;
+}
+
+table.miniMap {
+	background: #888888;
+}
+
+table.miniMap tr td {
+	width: 34px;
+	height: 34px;
+	background-size: cover;
+	border: 1px solid black;
+}
+
+table.miniMap tr td.key {
+	background-image: url(./img/key.png);
+}
+
+table.miniMap tr td.seal {
+	background-image: url(./img/seal.png);
+}
+
+table.miniMap tr td.wall {
+	background-image: url(./img/wall.png);
+}
+
+table.miniMap tr td.jewel {
+	background-image: url(./img/jewel.png);
+}
+
+table.miniMap tr td.gold {
+	background-image: url(./img/gold.png);
+}
+
+table.miniMap tr td.exit {
+	background-image: url(./img/exit.png);
+}
+
+.bodyWrapper .miniMapWrapper {
+	backdrop-filter: contrast(0.3);
+	position: fixed;
+	width: 650px;
+	height: 650px;
+	top: calc(100vh - 700px);
+	left: calc(100% - 700px);
+	z-index: 2;
+	padding: 5px;
+	display: none;
+}
+
+.bodyWrapper .miniMapWrapper.on {
+	display: block;
 }
