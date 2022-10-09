@@ -184,7 +184,7 @@ function drawMiniMap(type) {
 				miniMap.children[row].children[col].className = 'wall';
 				break;
 			default:
-				miniMap.children[row].children[col].className = '';
+				miniMap.children[row].children[col].removeAttribute('class');
 
 			}
 
