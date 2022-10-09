@@ -96,6 +96,7 @@ function toggleSibling(element) {
 function setBgVideo(element) {
 	element.autoplay = true;
 	element.loop = true;
+	element.muted = true;
 	element.src = '../info_01.mp4';
 	element.load();
 }
