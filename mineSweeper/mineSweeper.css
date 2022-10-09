@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+body div {
+	width: 100%;
+}
+
+body {
+	background-color: #DDDDDD;
+}
+
+ul, ol, li{
+	list-style:none;
+}
+
+a{
+	text-decoration: none;
+}
+
+.lnb ul.depth_0, .lnb ul.depth_1{
+	display: block !important;
+}
+
+.lnb ul.depth_0{
+	padding-inline-start:0;
+	background: #888888;
+}
+
+.lnb ul{
+	padding-inline-start:20px;
+}
+
+.lnb ul li a{
+	color: black;
+	font-size: 20px;
+}
+
+.lnb ul.depth_1 li a{
+	font-weight: 600;
+}
+
+.lnb ul.depth_2 li a{
+	font-weight: 400;
+}
+
+.lnb ul.depth_3 li a{
+	font-weight: 200;
+}
+
+.lnb ul li{
+	width: 100%;
+	min-height: 30px;
+	padding: 3px;
+}
+
+
+.bodyWrapper div {
+	position: relative;
+	width: 80%;
+	min-height: 100px;
+}
+
+.bgVideoWrapper {
+	width: 100%;
+	height: 100%;
+}
+
+.bgVideo {
+	position: fixed;
+	width: 100%;
+}
+
+.bodyWrapper{
+	width: 100%;
+	height: 100vh;
+}
+
+.bodyWrapper .lnb {
+	float: left;
+	width: 300px;
+	height: 100vh;
+	backdrop-filter: contrast(0.2);
+	z-index:1;
+}
+
+.bodyWrapper .contentsBody {
+	float: left;
+	width: calc(100% - 300px);
+	height: 100vh;
+}
+
+.bodyWrapper .contents {
+	padding: 30px;
+	height: calc(100vh - 260px);
+}
+
+.bodyWrapper .contents.on {
+	backdrop-filter: blur(12px);
+}
+
+.videoPlayer {
+	position: relative;
+	left: calc(50% - 480px);
+}
