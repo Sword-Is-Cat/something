@@ -97,6 +97,7 @@ function setBgVideo(element) {
 	element.autoplay = true;
 	element.loop = true;
 	element.src = '../info_01.mp4';
+	element.load();
 }
 
 function setYoutubeIframe(iframe) {
