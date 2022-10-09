@@ -131,7 +131,6 @@ table.miniMap tr td {
 	height: 34px;
 	background-size: cover;
 	border: 1px solid black;
-	background-image: url(./img/void.png);
 }
 
 table.miniMap tr td.key {
