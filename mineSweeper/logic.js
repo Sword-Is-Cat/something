@@ -226,11 +226,12 @@ function getData() {
 	}
 
 	// 빙고 idx단계 (세부설명, ytbId)
-	bingo.child[5].child.push(newNode('휴게소-검은고냥', 'hLSQ6BcD0oU'));
-	bingo.child[5].child.push(newNode('쉘터-수라고냥', 'dfc5sn_SbB8'));
-	bingo.child[5].child.push(newNode('휴게소-검은고냥', 'q5VOW0LBhsM'));
+	bingo.child[5].child.push(newNode('221001', 'hLSQ6BcD0oU'));
+	bingo.child[5].child.push(newNode('221001', 'dfc5sn_SbB8'));
+	bingo.child[5].child.push(newNode('221002', 'q5VOW0LBhsM'));
 
-	bingo.child[6].child.push(newNode('휴게소-검은고냥', 'vVXNkmBvoBM'));
+	bingo.child[6].child.push(newNode('221009', 'vVXNkmBvoBM'));
+	bingo.child[6].child.push(newNode('221010', '7kUqqwDtxdc'));
 
 	// 유적지쟁탈전
 	let ujangDate;
