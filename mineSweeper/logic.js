@@ -119,8 +119,10 @@ function setYoutubeIframe(iframe) {
 }
 
 function setYoutubeSrc(ytbId, type) {
+	
 	if (!ytbId)
 		ytbId = 'Y4DHoqZbKpM';
+	
 	let ytb = document.querySelector('iframe');
 	ytb.src = 'https://www.youtube.com/embed/' + ytbId;
 	ytb.style.display = 'block';
@@ -158,12 +160,9 @@ function drawMiniMap(type) {
 		for (let col = 0; col < length; col++) {
 
 			let cln = mapGrid[row][col];
-			td = appendElement('td', tr, cln == ' ' ? null : cln);
-
+			appendElement('td', tr, cln == ' ' ? null : cln);
 		}
-
 	}
-
 }
 
 function miniMapSize() {
