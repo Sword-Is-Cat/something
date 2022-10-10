@@ -32,25 +32,11 @@ function drawScreen() {
 	let iframe = appendElement('iframe', iframeWrapper, 'videoPlayer');
 	setYoutubeIframe(iframe);
 
-	let miniMapWrapper = appendElement('div', bodyWrapper, 'miniMapWrapper');
+	let miniMapWrapper = appendElement('div', contents, 'miniMapWrapper');
 	miniMapWrapper.setAttribute('id', 'miniMapWrapper');
-	fillMiniMap(miniMapWrapper);
-
-}
-
-function fillMiniMap(miniMap) {
-
-	let $table = appendElement('table', miniMap, 'miniMap'), $tr;
-	$table.setAttribute('id', 'miniMap');
-
-	for (let row = 0; row < 16; row++) {
-
-		$tr = appendElement('tr', $table);
-
-		for (let col = 0; col < 16; col++) {
-			appendElement('td', $tr);
-		}
-	}
+	miniMapWrapper.onclick = function() {
+		miniMapSize()
+	};
 
 }
 
@@ -156,40 +142,38 @@ function setYoutubeSrc(ytbId, type) {
 
 function drawMiniMap(type) {
 
-	let mapGrid = mapData[type];
+	let miniMapWrapper = document.getElementById('miniMapWrapper');
 
-	let miniMap = document.getElementById('miniMap');
+	while (miniMapWrapper.children.length > 0) {
+		miniMapWrapper.removeChild(miniMapWrapper.children[0]);
+	}
 
-	for (let row = 0; row < 16; row++) {
+	let miniMap = appendElement('table', miniMapWrapper, 'miniMap');
+	let mapGrid = mapData[type], length = mapGrid.length;
+	let tr, td;
 
-		for (let col = 0; col < 16; col++) {
+	for (let row = 0; row < length; row++) {
 
-			switch (mapGrid[row][col]) {
-			case 'E':
-				miniMap.children[row].children[col].className = 'exit';
-				break;
-			case 'G':
-				miniMap.children[row].children[col].className = 'gold';
-				break;
-			case 'J':
-				miniMap.children[row].children[col].className = 'jewel';
-				break;
-			case 'K':
-				miniMap.children[row].children[col].className = 'key';
-				break;
-			case 'S':
-				miniMap.children[row].children[col].className = 'seal';
-				break;
-			case 'W':
-				miniMap.children[row].children[col].className = 'wall';
-				break;
-			default:
-				miniMap.children[row].children[col].removeAttribute('class');
+		tr = appendElement('tr', miniMap);
 
-			}
+		for (let col = 0; col < length; col++) {
+
+			let cln = mapGrid[row][col];
+			td = appendElement('td', tr, cln == ' ' ? null : cln);
 
 		}
+
 	}
+
+}
+
+function miniMapSize() {
+
+	let miniClass = document.getElementById('miniMapWrapper').classList, small = 'small';
+	if (miniClass.contains(small))
+		miniClass.remove(small);
+	else
+		miniClass.add(small);
 
 }
 
@@ -226,35 +210,37 @@ function getData() {
 	}
 
 	// 빙고 idx단계 (세부설명, ytbId)
-	bingo.child[5].child.push(newNode('221001', 'hLSQ6BcD0oU'));
-	bingo.child[5].child.push(newNode('221001', 'dfc5sn_SbB8'));
-	bingo.child[5].child.push(newNode('221002', 'q5VOW0LBhsM'));
+	bingo.child[5].child.push(newNode('221001', 'hLSQ6BcD0oU', 'BINGO_5'));
+	bingo.child[5].child.push(newNode('221001', 'dfc5sn_SbB8', 'BINGO_5'));
+	bingo.child[5].child.push(newNode('221002', 'q5VOW0LBhsM', 'BINGO_5'));
 
-	bingo.child[6].child.push(newNode('221009', 'vVXNkmBvoBM'));
-	bingo.child[6].child.push(newNode('221010', '7kUqqwDtxdc'));
+	bingo.child[6].child.push(newNode('221009', 'vVXNkmBvoBM', 'BINGO_6'));
+	bingo.child[6].child.push(newNode('221010', '7kUqqwDtxdc', 'BINGO_6'));
 
+	bingo.child[7].child.push(newNode('맵작업중', '7kUqqwDtxdc', 'BINGO_7'));
+	
 	// 유적지쟁탈전
 	let ujangDate;
 
 	ujangDate = newNode('허허벌판');
 	ujang.child.push(ujangDate);
-	ujangDate.child.push(newNode('220709_허허벌판(1인)', '2-rr9JbFgwA', 'EMPTY'));
-	ujangDate.child.push(newNode('220716_허허벌판(1인)', 'iBwSjhuhM5E', 'EMPTY'));
-	ujangDate.child.push(newNode('220716_허허벌판(1인)', 'hzAMLDzX6VY', 'EMPTY'));
-	ujangDate.child.push(newNode('220716_허허벌판(1인)', 'c9tv_VFdHBo', 'EMPTY'));
-	ujangDate.child.push(newNode('220716_허허벌판(1인)', 'DFlNuB2f9bc', 'EMPTY'));
-	ujangDate.child.push(newNode('220723_허허벌판(1인)', 'aqOBftmHP-E', 'EMPTY'));
+	// ujangDate.child.push(newNode('220709_허허벌판(1인)', '2-rr9JbFgwA', 'EMPTY'));
+	// ujangDate.child.push(newNode('220716_허허벌판(1인)', 'iBwSjhuhM5E', 'EMPTY'));
+	// ujangDate.child.push(newNode('220716_허허벌판(1인)', 'hzAMLDzX6VY', 'EMPTY'));
+	// ujangDate.child.push(newNode('220716_허허벌판(1인)', 'c9tv_VFdHBo', 'EMPTY'));
+	// ujangDate.child.push(newNode('220716_허허벌판(1인)', 'DFlNuB2f9bc', 'EMPTY'));
+	// ujangDate.child.push(newNode('220723_허허벌판(1인)', 'aqOBftmHP-E', 'EMPTY'));
 	ujangDate.child.push(newNode('220723_허허벌판(1인)', '6HnILzCW69s', 'EMPTY'));
 	ujangDate.child.push(newNode('220723_허허벌판(1인)', 'lLNdQhIsKdc', 'EMPTY'));
 	ujangDate.child.push(newNode('220730_허허벌판(1인)', 'CjHi_7En9wg', 'EMPTY'));
 
 	ujangDate = newNode('누운Y자');
 	ujang.child.push(ujangDate);
-	ujangDate.child.push(newNode('220709_누운Y자(1인)', 'EIDqQqLDTAA', 'TURNY'));
-	ujangDate.child.push(newNode('220716_누운Y자(1인)', 'eqqIOD9YF1Y', 'TURNY'));
-	ujangDate.child.push(newNode('220723_누운Y자(1인)', 'ggQue0YNFWw', 'TURNY'));
-	ujangDate.child.push(newNode('220723_누운Y자(1인)', 'QxwQ0N4wkRg', 'TURNY'));
-	ujangDate.child.push(newNode('220723_누운Y자(1인)', '_zNvWzw5Pq8', 'TURNY'));
+	// ujangDate.child.push(newNode('220709_누운Y자(1인)', 'EIDqQqLDTAA', 'TURNY'));
+	// ujangDate.child.push(newNode('220716_누운Y자(1인)', 'eqqIOD9YF1Y', 'TURNY'));
+	// ujangDate.child.push(newNode('220723_누운Y자(1인)', 'ggQue0YNFWw', 'TURNY'));
+	// ujangDate.child.push(newNode('220723_누운Y자(1인)', 'QxwQ0N4wkRg', 'TURNY'));
+	// ujangDate.child.push(newNode('220723_누운Y자(1인)', '_zNvWzw5Pq8', 'TURNY'));
 	ujangDate.child.push(newNode('220723_누운Y자(1인)', 'EMGFbQ-DpUs', 'TURNY'));
 	ujangDate.child.push(newNode('220730_누운Y자(1인)', '2nLQy-z1ckI', 'TURNY'));
 	ujangDate.child.push(newNode('220730_누운Y자(1인)', 'kMt4YZiGMSA', 'TURNY'));
@@ -272,9 +258,12 @@ function getData() {
 
 	ujangDate = newNode('고블린보너스');
 	ujang.child.push(ujangDate);
-	ujangDate.child.push(newNode('220709_고블린보너스(1인)', 'Hm9U4T3TUlc', 'FUCK'));
-	ujangDate.child.push(newNode('220716_고블린보너스(1인)', 'y4ZXU0526zU', 'FUCK'));
-	ujangDate.child.push(newNode('220730_고블린보너스(1인)', 'Mc0cRThGFNs', 'FUCK'));
+	// ujangDate.child.push(newNode('220709_고블린보너스(1인)', 'Hm9U4T3TUlc',
+	// 'FUCK'));
+	// ujangDate.child.push(newNode('220716_고블린보너스(1인)', 'y4ZXU0526zU',
+	// 'FUCK'));
+	// ujangDate.child.push(newNode('220730_고블린보너스(1인)', 'Mc0cRThGFNs',
+	// 'FUCK'));
 	ujangDate.child.push(newNode('220730_고블린보너스(1인)', 'hfXU95PTh4w', 'FUCK'));
 	ujangDate.child.push(newNode('220730_고블린보너스(1인)', 'RMoWi0Q-NDE', 'FUCK'));
 	ujangDate.child.push(newNode('220730_고블린보너스(1인)', 'w5fa6f7j5X8', 'FUCK'));
@@ -616,6 +605,71 @@ function getMapData() {
 			[ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W', ' ', ' ', ' ', ' ',
 					' ', ' ', ' ' ] ];
 
+	let BINGO_1;
+
+	let BINGO_2;
+
+	let BINGO_3;
+
+	let BINGO_4;
+
+	let BINGO_5 = [
+		['K',' ',' ',' ',' ',' ','S',' ',' ',' ',' ',' ','K'],
+		[' ',' ',' ',' ',' ','W','W','W',' ',' ',' ',' ',' '],
+		[' ',' ',' ',' ','W','W','E','W','W',' ',' ',' ',' '],
+		[' ',' ',' ','W','W','W','S','W','W','W',' ',' ',' '],
+		[' ',' ','W','W',' ',' ',' ',' ',' ','S',' ',' ',' '],
+		[' ','W','W',' ',' ',' ',' ',' ',' ','W','W','W',' '],
+		['S','W',' ',' ',' ',' ',' ',' ',' ',' ',' ','W','W'],
+		[' ','W','W',' ',' ',' ',' ',' ',' ',' ','W','W','K'],
+		[' ',' ','W','W',' ',' ',' ',' ',' ','W','W',' ',' '],
+		[' ',' ',' ','W','W',' ',' ',' ','W','W',' ',' ',' '],
+		[' ',' ',' ',' ','W','W','K','W','W',' ',' ',' ',' '],
+		[' ',' ',' ',' ',' ','W','W','W',' ',' ',' ',' ',' '],
+		['K',' ',' ',' ',' ',' ','S',' ',' ',' ',' ',' ',' ']
+	];
+
+	let BINGO_6 = [
+		[' ',' ','S',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','S','E'],
+		[' ',' ','W','W',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','W','W'],
+		[' ',' ',' ','W','W',' ',' ',' ',' ',' ',' ',' ',' ','W','W','K'],
+		[' ',' ',' ',' ','W','W',' ',' ',' ',' ',' ',' ','W','W',' ',' '],
+		[' ',' ',' ',' ',' ','W','W',' ',' ',' ',' ','W','W',' ',' ',' '],
+		[' ',' ',' ',' ',' ',' ','W','W','K',' ','W','W',' ',' ',' ',' '],
+		[' ',' ',' ',' ',' ',' ',' ','W','W','W','W',' ',' ',' ',' ',' '],
+		[' ',' ',' ',' ',' ',' ',' ','S',' ',' ',' ',' ',' ',' ','W','S'],
+		[' ',' ',' ',' ',' ',' ','W','W',' ',' ',' ',' ',' ','W','W',' '],
+		[' ',' ',' ',' ',' ','W','W','W','W',' ',' ',' ','W','W',' ',' '],
+		[' ',' ',' ',' ','W','W',' ','K','W','W',' ','W','W',' ',' ',' '],
+		[' ',' ',' ','W','W',' ',' ',' ',' ','W','W','W','K',' ',' ',' '],
+		[' ',' ','W','W',' ',' ',' ',' ',' ',' ','W','W',' ',' ',' ',' '],
+		['K','W','W',' ',' ',' ',' ',' ',' ',' ',' ','W','W',' ',' ',' '],
+		['W','W',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','W',' ',' ',' '],
+		[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','S',' ',' ',' ']
+	];
+
+	let BINGO_7 = [
+		[' ',' ',' ',' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+		[' ',' ',' ',' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+		[' ',' ',' ',' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+		[' ',' ',' ',' ',' ',' ',' ',' ',' ','S',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+		[' ',' ',' ',' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+		[' ',' ',' ',' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+		[' ',' ',' ',' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+		[' ',' ',' ',' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+		[' ',' ',' ',' ',' ',' ',' ',' ','W','W','W',' ',' ',' ',' ',' ',' ',' ',' '],
+		['W','W','W','S','W','W','W','W','W','E','W','W','W','W','W','S','W','W','W'],
+		[' ',' ',' ',' ',' ',' ',' ',' ','W','S','W',' ',' ',' ',' ',' ',' ',' ',' '],
+		[' ',' ',' ',' ',' ',' ',' ',' ','W','S','W',' ',' ',' ',' ',' ',' ',' ',' '],
+		[' ',' ',' ',' ',' ',' ',' ',' ','W','S','W',' ',' ',' ',' ',' ',' ',' ',' '],
+		[' ',' ',' ',' ',' ',' ',' ',' ','W','S','W',' ',' ',' ',' ',' ',' ',' ',' '],
+		[' ',' ',' ',' ',' ',' ',' ',' ','W','S','W',' ',' ',' ',' ',' ',' ',' ',' '],
+		[' ',' ',' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+		[' ',' ',' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+		[' ',' ',' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+		[' ',' ',' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
+	];
+
 	mapData['EMPTY'] = EMPTY;
 	mapData['FUCK'] = FUCK;
 	mapData['TURNY'] = TURNY;
@@ -625,6 +679,14 @@ function getMapData() {
 	mapData['RING'] = RING;
 	mapData['EXIT'] = EXIT;
 	mapData['CROSSOP'] = CROSSOP;
+
+	mapData['BINGO_1'] = BINGO_1;
+	mapData['BINGO_2'] = BINGO_2;
+	mapData['BINGO_3'] = BINGO_3;
+	mapData['BINGO_4'] = BINGO_4;
+	mapData['BINGO_5'] = BINGO_5;
+	mapData['BINGO_6'] = BINGO_6;
+	mapData['BINGO_7'] = BINGO_7;
 
 	return mapData;
 

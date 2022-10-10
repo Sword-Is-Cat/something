@@ -83,7 +83,6 @@ a {
 	width: 300px;
 	height: 100vh;
 	backdrop-filter: contrast(0.2);
-	z-index: 1;
 }
 
 .bodyWrapper .contentsBody {
@@ -106,6 +105,7 @@ a {
 .bodyWrapper .contents .iframeWrapper {
 	width: 100%;
 	margin: 0;
+	z-index: 1;
 }
 
 .bodyWrapper .contents .iframeWrapper .videoPlayer {
@@ -124,49 +124,61 @@ a {
 
 table.miniMap {
 	background: #888888;
+	border-collapse: collapse;
+	width: 100%;
+	height: 100%;
 }
 
 table.miniMap tr td {
-	width: 34px;
-	height: 34px;
 	background-size: contain;
 	border: 1px solid black;
 }
 
-table.miniMap tr td.key {
+table.miniMap tr td.K {
 	background-image: url(./img/key.png);
 }
 
-table.miniMap tr td.seal {
+table.miniMap tr td.S {
 	background-image: url(./img/seal.png);
 }
 
-table.miniMap tr td.wall {
+table.miniMap tr td.W {
 	background-image: url(./img/wall.png);
 }
 
-table.miniMap tr td.jewel {
+table.miniMap tr td.J {
 	background-image: url(./img/jewel.png);
 }
 
-table.miniMap tr td.gold {
+table.miniMap tr td.G {
 	background-image: url(./img/gold.png);
 }
 
-table.miniMap tr td.exit {
+table.miniMap tr td.E {
 	background-image: url(./img/exit.png);
 }
 
 .bodyWrapper .miniMapWrapper {
-	backdrop-filter: contrast(0.3);
+	background-color: rgba(44,44,44,0.5);
 	position: fixed;
 	width: 650px;
 	height: 650px;
-	top: calc(100vh - 700px);
-	left: calc(100% - 700px);
-	z-index: 2;
-	padding: 5px;
+	right: 30px;
+	bottom: 30px;
+	padding: 10px;
 	display: none;
+	z-index: 2;
+}
+
+.bodyWrapper .miniMapWrapper.small {
+	width: 450px;
+	height: 450px;
+	right: 100px;
+	bottom: 100px;
+}
+
+.bodyWrapper .miniMapWrapper.lower {
+	z-index: 0;
 }
 
 .bodyWrapper .miniMapWrapper.on {
