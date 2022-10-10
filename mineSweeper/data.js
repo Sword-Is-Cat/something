@@ -29,8 +29,9 @@ function getData() {
 	bingo.child[6].child.push(newNode('221009', 'vVXNkmBvoBM', 'BINGO_6'));
 	bingo.child[6].child.push(newNode('221010', '7kUqqwDtxdc', 'BINGO_6'));
 
-	bingo.child[7].child.push(newNode('221010클리어못함', 'Ye0QMcRTcIE', 'BINGO_7'));
+	//bingo.child[7].child.push(newNode('221010클리어못함', 'Ye0QMcRTcIE', 'BINGO_7'));
 	bingo.child[7].child.push(newNode('221010_엘므', 'KN5fv5H73NQ', 'BINGO_7')); 
+	bingo.child[7].child.push(newNode('221011', 'UktogKjL8H4', 'BINGO_7')); 
 
 	// 유적지쟁탈전
 	let ujangDate;
