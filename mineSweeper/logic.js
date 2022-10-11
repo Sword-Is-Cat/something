@@ -21,7 +21,9 @@ function drawScreen() {
 	let bodyWrapper = appendElement('div', body, 'bodyWrapper');
 
 	let lnb = appendElement('div', bodyWrapper, 'lnb');
-	bindLnbData(lnb);
+
+	let lnbContent = appendElement('div', lnb, 'lnbContent');
+	bindLnbData(lnbContent);
 
 	let contentsBody = appendElement('div', bodyWrapper, 'contentsBody');
 
@@ -65,9 +67,13 @@ function drawDataMenu(node, ul, depth) {
 		li.appendChild($a);
 
 		if (node.id) {
-			$a.href = 'javascript:setYoutubeSrc(\'' + node.id + '\', \'' + node.type + '\')';
+			// $a.href = 'javascript:setYoutubeSrc(\'' + node.id + '\', \'' +
+			// node.type + '\')';
+			$a.onclick = function() {
+				setYoutubeSrc(node.id, node.type);
+			}
 		} else {
-			$a.href = 'javascript:void(0)';
+			// $a.href = 'javascript:void(0)';
 		}
 
 		if (node.child.length > 0) {
@@ -119,10 +125,10 @@ function setYoutubeIframe(iframe) {
 }
 
 function setYoutubeSrc(ytbId, type) {
-	
+
 	if (!ytbId)
 		ytbId = 'Y4DHoqZbKpM';
-	
+
 	let ytb = document.querySelector('iframe');
 	ytb.src = 'https://www.youtube.com/embed/' + ytbId;
 	ytb.style.display = 'block';

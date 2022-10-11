@@ -1,101 +1,31 @@
 @charset "UTF-8";
 
+body {
+	margin: 0; background-color: #DDDDDD;
+}
+
+body::-webkit-scrollbar {
+	display: none;
+}
+
 body div {
 	width: 100%;
-}
-
-body {
-	margin: 0;
-	background-color: #DDDDDD;
-}
-
-body::-webkit-scrollbar { 
-    display: none;  /* Safari and Chrome */
 }
 
 ul, ol, li {
 	list-style: none;
 }
 
-a {
-	text-decoration: none;
-}
-
-.lnb ul.depth_0, .lnb ul.depth_1 {
-	display: block !important;
-}
-
-.lnb ul.depth_0 {
-	padding-inline-start: 0;
-	background: #888888;
-}
-
-.lnb ul {
-	padding-inline-start: 20px;
-}
-
-.lnb ul li a {
-	color: black;
-	font-size: 20px;
-}
-
-.lnb ul.depth_1 li a {
-	font-weight: 600;
-}
-
-.lnb ul.depth_2 li a {
-	font-weight: 400;
-}
-
-.lnb ul.depth_3 li a {
-	font-weight: 200;
-}
-
-.lnb ul li {
-	width: 100%;
-	min-height: 30px;
-	padding: 3px;
-}
-
-.bodyWrapper div {
-	position: relative;
-	width: 80%;
-	min-height: 100px;
-}
-
-.bgVideoWrapper {
-	width: 100%;
-	height: 100%;
-}
-
-.bgVideo {
-	position: fixed;
-	width: 100%;
-}
-
 .bodyWrapper {
-	width: 100%;
-	height: 100vh;
-}
-
-.bodyWrapper .lnb {
-	float: left;
-	width: 300px;
-	height: 100vh;
-	backdrop-filter: contrast(0.2);
+	width: 100%; height: 100vh;
 }
 
 .bodyWrapper .contentsBody {
-	position: fixed;
-	left: 300px;
-	width: calc(100% - 300px);
-	height: 100vh;
+	position: fixed; left: 300px; width: calc(100% - 300px); height: 100vh;
 }
 
 .bodyWrapper .contents {
-	padding: 30px;
-	width: calc(100% - 60px);
-	height: calc(100vh - 60px);
+	padding: 30px; width: calc(100% - 60px); height: calc(100vh - 60px);
 }
 
 .bodyWrapper .contents.on {
@@ -103,9 +33,7 @@ a {
 }
 
 .bodyWrapper .contents .iframeWrapper {
-	width: 100%;
-	margin: 0;
-	z-index: 1;
+	width: 100%; margin: 0; z-index: 1;
 }
 
 .bodyWrapper .contents .iframeWrapper .videoPlayer {
@@ -113,25 +41,67 @@ a {
 }
 
 .bodyWrapper .contents .iframeWrapper .videoPlayer.single {
-	left: calc(50% - 480px);
-	top: calc(40vh - 270px);
+	left: calc(50% - 480px); top: calc(40vh - 270px);
 }
 
 .bodyWrapper .contents .iframeWrapper .videoPlayer.double {
-	left: 0;
-	top: 0;
+	left: 0; top: 0;
+}
+
+.bodyWrapper .lnb {
+	float: left; width: 300px; height: 100vh; backdrop-filter: contrast(0.2);
+}
+
+.bodyWrapper .lnb .lnbContent {
+	width: 100%; margin: 0;
+}
+
+.bodyWrapper .lnb ul {
+	padding-inline-start: 20px;
+}
+
+.bodyWrapper .lnb ul.depth_0 {
+	padding-inline-start: 0; background: #888888; margin: 20px 0 0 0;
+}
+
+.bodyWrapper .lnb ul.depth_0, .lnb ul.depth_1 {
+	display: block !important;
+}
+
+.bodyWrapper .lnb ul li {
+	width: 100%; min-height: 30px; padding: 3px;
+}
+
+.bodyWrapper .lnb ul li a {
+	color: black; font-size: 20px; text-decoration: none; cursor: pointer;
+}
+
+.bodyWrapper .lnb ul.depth_1 li a {
+	font-weight: 600;
+}
+
+.bodyWrapper .lnb ul.depth_2 li a {
+	font-weight: 400;
+}
+
+.bodyWrapper .lnb ul.depth_3 li a {
+	font-weight: 200;
+}
+
+.bodyWrapper div {
+	position: relative; width: 80%; min-height: 100px;
+}
+
+.bgVideo {
+	position: fixed; width: 100%;
 }
 
 table.miniMap {
-	background: #888888;
-	border-collapse: collapse;
-	width: 100%;
-	height: 100%;
+	background: #888888; border-collapse: collapse; width: 100%; height: 100%;
 }
 
 table.miniMap tr td {
-	background-size: contain;
-	border: 1px solid black;
+	background-size: contain; border: 1px solid black;
 }
 
 table.miniMap tr td.K {
@@ -159,22 +129,11 @@ table.miniMap tr td.E {
 }
 
 .bodyWrapper .miniMapWrapper {
-	background-color: rgba(44,44,44,0.5);
-	position: fixed;
-	width: 650px;
-	height: 650px;
-	right: 30px;
-	bottom: 30px;
-	padding: 10px;
-	display: none;
-	z-index: 2;
+	background-color: rgba(44, 44, 44, 0.5); position: fixed; width: 650px; height: 650px; right: 30px; bottom: 30px; padding: 10px; display: none; z-index: 2;
 }
 
 .bodyWrapper .miniMapWrapper.small {
-	width: 450px;
-	height: 450px;
-	right: 100px;
-	bottom: 100px;
+	width: 450px; height: 450px; right: 100px; bottom: 100px;
 }
 
 .bodyWrapper .miniMapWrapper.lower {
