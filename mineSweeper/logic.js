@@ -55,7 +55,7 @@ function bindLnbData(lnb) {
 
 function drawDataMenu(node, ul, depth) {
 
-	if (node.name) {
+	if (node.name && (node.child.length > 0 || node.id)) {
 
 		let li = document.createElement('li');
 		ul.appendChild(li);
