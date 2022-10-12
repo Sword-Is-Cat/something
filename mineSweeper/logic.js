@@ -61,19 +61,13 @@ function drawDataMenu(node, ul, depth) {
 		ul.appendChild(li);
 		ul.className = 'depth_' + depth;
 
-		let $a = document.createElement('a');
+		let $a = appendElement('a', li);
 		$a.innerText = node.name;
 
-		li.appendChild($a);
-
 		if (node.id) {
-			// $a.href = 'javascript:setYoutubeSrc(\'' + node.id + '\', \'' +
-			// node.type + '\')';
 			$a.onclick = function() {
 				setYoutubeSrc(node.id, node.type);
 			}
-		} else {
-			// $a.href = 'javascript:void(0)';
 		}
 
 		if (node.child.length > 0) {
@@ -165,8 +159,7 @@ function drawMiniMap(type) {
 
 		for (let col = 0; col < length; col++) {
 
-			let cln = mapGrid[row][col];
-			appendElement('td', tr, cln == ' ' ? null : cln);
+			appendElement('td', tr, mapGrid[row][col].trim());
 		}
 	}
 }
