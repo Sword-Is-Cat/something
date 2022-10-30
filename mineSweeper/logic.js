@@ -6,8 +6,8 @@ let mapData;
 
 $(function() {
 
-	drawScreen();
 	mapData = getMapData();
+	drawScreen();
 
 });
 
@@ -40,6 +40,11 @@ function drawScreen() {
 		miniMapSize()
 	};
 
+	let miniMapAll = appendElement('div', contents, 'miniMapAll');
+	miniMapAll.setAttribute('id', 'miniMapAll');
+
+	drawAllminiMap(miniMapAll);
+
 }
 
 function bindLnbData(lnb) {
@@ -65,8 +70,15 @@ function drawDataMenu(node, ul, depth) {
 		$a.innerText = node.name;
 
 		if (node.id) {
-			$a.onclick = function() {
-				setYoutubeSrc(node.id, node.type);
+
+			if (node.id == 'maps') {
+				$a.onclick = function() {
+					showMaps();
+				}
+			} else {
+				$a.onclick = function() {
+					setYoutubeSrc(node.id, node.type);
+				}
 			}
 		}
 
@@ -83,6 +95,13 @@ function drawDataMenu(node, ul, depth) {
 			$ul.style.display = 'none';
 		}
 	}
+}
+
+function showMaps() {
+
+	document.querySelector('.contents').classList.add('on');
+	document.querySelector('.contents').classList.add('maps');
+
 }
 
 function toggleSibling(element) {
@@ -127,6 +146,7 @@ function setYoutubeSrc(ytbId, type) {
 	ytb.src = 'https://www.youtube.com/embed/' + ytbId;
 	ytb.style.display = 'block';
 	document.querySelector('.contents').classList.add('on');
+	document.querySelector('.contents').classList.remove('maps');
 
 	ytb.className = 'videoPlayer';
 
@@ -149,29 +169,63 @@ function drawMiniMap(type) {
 		miniMapWrapper.removeChild(miniMapWrapper.children[0]);
 	}
 
-	let miniMap = appendElement('table', miniMapWrapper, 'miniMap');
-	let mapGrid = mapData[type], length = mapGrid.length;
-	let tr, td;
+	let tableElement = appendElement('table', miniMapWrapper, 'miniMap');
+
+	drawOneMiniMap(tableElement, mapData[type]);
+}
+
+function drawAllminiMap(wrapper) {
+
+	let $ul = appendElement('ul', wrapper);
+	let $li, $title, $body, $table;
+
+	Object.keys(mapData).forEach(function(key) {
+
+		if (key.indexOf('BINGO') == -1) {
+
+			$li = appendElement('li', $ul);
+
+			$title = appendElement('div', $li, 'mapTitle');
+			$title.innerText = key;
+
+			$body = appendElement('div', $li, 'mapBody');
+			$table = appendElement('table', $body, 'miniMap');
+			drawOneMiniMap($table, mapData[key]);
+
+		}
+
+	});
+
+}
+
+function drawOneMiniMap(tableElement, mapGrid) {
+
+	let tr, td, length = mapGrid.length;
 
 	for (let row = 0; row < length; row++) {
 
-		tr = appendElement('tr', miniMap);
+		tr = appendElement('tr', tableElement);
 
 		for (let col = 0; col < length; col++) {
 
 			appendElement('td', tr, mapGrid[row][col].trim());
 		}
 	}
+
 }
 
 function miniMapSize() {
 
-	let miniClass = document.getElementById('miniMapWrapper').classList, small = 'small';
-	if (miniClass.contains(small))
-		miniClass.remove(small);
-	else
-		miniClass.add(small);
+	toggleClass(document.getElementById('miniMapWrapper'), 'small');
 
+}
+
+function toggleClass(element, className) {
+	let classList = element.classList;
+	if (classList.contains(className))
+		classList.remove(className);
+	else
+		classList.add(className);
 }
 
 function appendElement(tagName, parent, className) {

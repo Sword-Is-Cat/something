@@ -13,102 +13,62 @@ function getData() {
 
 	let bingo = newNode('길드빙고');
 	let ujang = newNode('유적지쟁탈전');
+	let maps = newNode('맵모아보기', 'maps');
 
 	root.child.push(bingo);
 	root.child.push(ujang);
+	root.child.push(maps);
 
-	for (let idx = 0; idx < 8; idx++) {
-		bingo.child.push(newNode(idx == 0 ? null : idx + "단계"));
-	}
+
+	// for (let idx = 0; idx < 8; idx++) {
+	// bingo.child.push(newNode(idx == 0 ? null : idx + "단계"));
+	// }
 
 	// 빙고 idx단계 (세부설명, ytbId)
 	// bingo.child[5].child.push(newNode('221001', 'hLSQ6BcD0oU', 'BINGO_5'));
-	bingo.child[3].child.push(newNode('221018', 'Mt5jkh6k0oo', 'BINGO_3'));
-	
-	bingo.child[4].child.push(newNode('221018', 'vCCWVECQ1Oc', 'BINGO_4'));
-	bingo.child[4].child.push(newNode('221018', 'LDpfI4JbOSc', 'BINGO_4'));
-	
-	
-	bingo.child[5].child.push(newNode('221001', 'dfc5sn_SbB8', 'BINGO_5'));
-	bingo.child[5].child.push(newNode('221002', 'q5VOW0LBhsM', 'BINGO_5'));
+	bingo.child.push(newNode('3단계', 'Mt5jkh6k0oo', 'BINGO_3'));
 
-	bingo.child[6].child.push(newNode('221009', 'vVXNkmBvoBM', 'BINGO_6'));
-	bingo.child[6].child.push(newNode('221010', '7kUqqwDtxdc', 'BINGO_6'));
+	bingo.child.push(newNode('4단계', 'vCCWVECQ1Oc', 'BINGO_4'));
+	// bingo.child[4].child.push(newNode('3단계', 'LDpfI4JbOSc', 'BINGO_4'));
 
-	// bingo.child[7].child.push(newNode('221010클리어못함', 'Ye0QMcRTcIE',
-	// 'BINGO_7'));
-	// bingo.child[7].child.push(newNode('221010_엘므', 'KN5fv5H73NQ',
-	// 'BINGO_7'));
-	// bingo.child[7].child.push(newNode('221011', 'UktogKjL8H4', 'BINGO_7'));
-	// bingo.child[7].child.push(newNode('221011', '2x1afLyGUx4', 'BINGO_7'));
-	bingo.child[7].child.push(newNode('221012', 'N9XkhyWeEt0', 'BINGO_7'));
-	bingo.child[7].child.push(newNode('221012', 'dq7GFnUWE0w', 'BINGO_7'));
+	bingo.child.push(newNode('5단계', 'dfc5sn_SbB8', 'BINGO_5'));
+	// bingo.child[5].child.push(newNode('3단계', 'q5VOW0LBhsM', 'BINGO_5'));
+
+	bingo.child.push(newNode('6단계', 'vVXNkmBvoBM', 'BINGO_6'));
+	// bingo.child[6].child.push(newNode('3단계', '7kUqqwDtxdc', 'BINGO_6'));
+
+	bingo.child.push(newNode('7단계', 'N9XkhyWeEt0', 'BINGO_7'));
+	// bingo.child[7].child.push(newNode('3단계', 'dq7GFnUWE0w', 'BINGO_7'));
 
 	// 유적지쟁탈전
 	let ujangDate;
 
-	ujangDate = newNode('허허벌판');
+	ujangDate = newNode('허허벌판', 'CjHi_7En9wg', 'EMPTY');
 	ujang.child.push(ujangDate);
-	// ujangDate.child.push(newNode('220709_허허벌판(1인)', '2-rr9JbFgwA', 'EMPTY'));
-	// ujangDate.child.push(newNode('220716_허허벌판(1인)', 'iBwSjhuhM5E', 'EMPTY'));
-	// ujangDate.child.push(newNode('220716_허허벌판(1인)', 'hzAMLDzX6VY', 'EMPTY'));
-	// ujangDate.child.push(newNode('220716_허허벌판(1인)', 'c9tv_VFdHBo', 'EMPTY'));
-	// ujangDate.child.push(newNode('220716_허허벌판(1인)', 'DFlNuB2f9bc', 'EMPTY'));
-	// ujangDate.child.push(newNode('220723_허허벌판(1인)', 'aqOBftmHP-E', 'EMPTY'));
-	// ujangDate.child.push(newNode('220723(1인)', '6HnILzCW69s', 'EMPTY'));
-	ujangDate.child.push(newNode('220723(1인)', 'lLNdQhIsKdc', 'EMPTY'));
-	ujangDate.child.push(newNode('220730(1인)', 'CjHi_7En9wg', 'EMPTY'));
 
-	ujangDate = newNode('누운Y자');
+	ujangDate = newNode('누운Y자', 'kMt4YZiGMSA', 'TURNY');
 	ujang.child.push(ujangDate);
-	// ujangDate.child.push(newNode('220709_누운Y자(1인)', 'EIDqQqLDTAA', 'TURNY'));
-	// ujangDate.child.push(newNode('220716_누운Y자(1인)', 'eqqIOD9YF1Y', 'TURNY'));
-	// ujangDate.child.push(newNode('220723_누운Y자(1인)', 'ggQue0YNFWw', 'TURNY'));
-	// ujangDate.child.push(newNode('220723_누운Y자(1인)', 'QxwQ0N4wkRg', 'TURNY'));
-	// ujangDate.child.push(newNode('220723_누운Y자(1인)', '_zNvWzw5Pq8', 'TURNY'));
-	// ujangDate.child.push(newNode('220723(1인)', 'EMGFbQ-DpUs', 'TURNY'));
-	ujangDate.child.push(newNode('220730(1인)', '2nLQy-z1ckI', 'TURNY'));
-	ujangDate.child.push(newNode('220730(1인)', 'kMt4YZiGMSA', 'TURNY'));
 
-	ujangDate = newNode('능선');
+	ujangDate = newNode('능선', 'fV3OF8xRooI', 'VALLEY');
 	ujang.child.push(ujangDate);
-	ujangDate.child.push(newNode('220709(1인)', 'eAWszz0Jk6o', 'VALLEY'));
-	ujangDate.child.push(newNode('220716(1인)', 'fV3OF8xRooI', 'VALLEY'));
 
-	ujangDate = newNode('4개의방');
+	ujangDate = newNode('4개의방', 'HUwzl3uqNGs', 'FOUR');
 	ujang.child.push(ujangDate);
-	// ujangDate.child.push(newNode('220709(1인)', 'VfX1WRhdBIE', 'FOUR'));
-	ujangDate.child.push(newNode('220709(1인)', 'DDkUYm6qZpU', 'FOUR'));
-	ujangDate.child.push(newNode('220716(1인)', 'HUwzl3uqNGs', 'FOUR'));
 
-	ujangDate = newNode('고블린보너스');
+	ujangDate = newNode('고블린보너스', 'w5fa6f7j5X8', 'FUCK');
 	ujang.child.push(ujangDate);
-	// ujangDate.child.push(newNode('220709_(1인)', 'Hm9U4T3TUlc', 'FUCK'));
-	// ujangDate.child.push(newNode('220716_(1인)', 'y4ZXU0526zU', 'FUCK'));
-	// ujangDate.child.push(newNode('220730_(1인)', 'Mc0cRThGFNs', 'FUCK'));
-	// ujangDate.child.push(newNode('220730(1인)', 'hfXU95PTh4w', 'FUCK'));
-	ujangDate.child.push(newNode('220730(1인)', 'RMoWi0Q-NDE', 'FUCK'));
-	ujangDate.child.push(newNode('220730(1인)', 'w5fa6f7j5X8', 'FUCK'));
 
-	ujangDate = newNode('닫힌십자가');
+	ujangDate = newNode('닫힌십자가', '0PQTPYK1BfQ', 'CROSSCL');
 	ujang.child.push(ujangDate);
-	ujangDate.child.push(newNode('220723(1인)', 'wwD0MKH2rF8', 'CROSSCL'));
-	ujangDate.child.push(newNode('220730(1인)', '0PQTPYK1BfQ', 'CROSSCL'));
 
-	ujangDate = newNode('열린십자가');
+	ujangDate = newNode('열린십자가', 'I8CJ11VLw9w', 'CROSSOP');
 	ujang.child.push(ujangDate);
-	ujangDate.child.push(newNode('220709(1인)', 'nmjlTr3iTm0', 'CROSSOP'));
-	ujangDate.child.push(newNode('220730(1인)', 'I8CJ11VLw9w', 'CROSSOP'));
 
-	ujangDate = newNode('나이테');
+	ujangDate = newNode('나이테', '56Eri_jpWvE', 'RING');
 	ujang.child.push(ujangDate);
-	// ujangDate.child.push(newNode('220716(1인)', 'Yt-QFUd8xfI', 'RING'));
-	ujangDate.child.push(newNode('220723(1인)', 'IIMInz3mpGM', 'RING'));
-	ujangDate.child.push(newNode('220730(1인)', '56Eri_jpWvE', 'RING'));
 
-	ujangDate = newNode('출구앞문');
+	ujangDate = newNode('출구앞문', '-Tk_GZlCVgY', 'EXIT');
 	ujang.child.push(ujangDate);
-	ujangDate.child.push(newNode('220716(1인)', '-Tk_GZlCVgY', 'EXIT'));
 
 	ujangDate = newNode('20분 풀영상');
 	ujang.child.push(ujangDate);
@@ -278,34 +238,30 @@ function getMapData() {
 
 	let BINGO_2;
 
-	let BINGO_3 = [
-		['E','W',' ',' ',' ',' ','S',' ',' ',' ',' '],
-		['S','W',' ',' ',' ','W','W',' ',' ',' ',' '],
-		[' ',' ',' ',' ','W','W',' ',' ',' ',' ',' '],
-		[' ',' ',' ','W','W',' ',' ',' ',' ',' ',' '],
-		[' ',' ','W','W',' ',' ',' ',' ',' ',' ','W'],
-		['K','W','W',' ',' ',' ',' ',' ',' ','W','W'],
-		['W','W',' ',' ',' ',' ',' ',' ','W','W','K'],
-		[' ',' ',' ',' ',' ',' ',' ','W','W',' ',' '],
-		[' ',' ',' ',' ',' ',' ','W','W',' ',' ',' '],
-		[' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' '],
-		['K',' ',' ',' ',' ',' ','S',' ',' ',' ',' '],
-	];
+	let BINGO_3 = [ [ 'E', 'W', ' ', ' ', ' ', ' ', 'S', ' ', ' ', ' ', ' ' ],
+			[ 'S', 'W', ' ', ' ', ' ', 'W', 'W', ' ', ' ', ' ', ' ' ],
+			[ ' ', ' ', ' ', ' ', 'W', 'W', ' ', ' ', ' ', ' ', ' ' ],
+			[ ' ', ' ', ' ', 'W', 'W', ' ', ' ', ' ', ' ', ' ', ' ' ],
+			[ ' ', ' ', 'W', 'W', ' ', ' ', ' ', ' ', ' ', ' ', 'W' ],
+			[ 'K', 'W', 'W', ' ', ' ', ' ', ' ', ' ', ' ', 'W', 'W' ],
+			[ 'W', 'W', ' ', ' ', ' ', ' ', ' ', ' ', 'W', 'W', 'K' ],
+			[ ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W', 'W', ' ', ' ' ],
+			[ ' ', ' ', ' ', ' ', ' ', ' ', 'W', 'W', ' ', ' ', ' ' ],
+			[ ' ', ' ', ' ', ' ', ' ', ' ', 'W', ' ', ' ', ' ', ' ' ],
+			[ 'K', ' ', ' ', ' ', ' ', ' ', 'S', ' ', ' ', ' ', ' ' ], ];
 
-	let BINGO_4 = [
-		['K',' ',' ',' ',' ','W','E','W',' ',' ',' ',' '],
-		[' ',' ',' ',' ',' ','W','S','W',' ',' ',' ',' '],
-		[' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' '],
-		[' ',' ',' ',' ',' ','S',' ',' ',' ',' ',' ',' '],
-		[' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' ',' '],
-		['W','W','S','W','W','W','W','W','W','W','W','W'],
-		[' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ','K'],
-		[' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' '],
-		[' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' '],
-		[' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' '],
-		[' ',' ',' ',' ',' ',' ','W',' ',' ',' ',' ',' '],
-		[' ',' ',' ',' ',' ',' ','K',' ',' ',' ',' ',' ']
-	];
+	let BINGO_4 = [ [ 'K', ' ', ' ', ' ', ' ', 'W', 'E', 'W', ' ', ' ', ' ', ' ' ],
+			[ ' ', ' ', ' ', ' ', ' ', 'W', 'S', 'W', ' ', ' ', ' ', ' ' ],
+			[ ' ', ' ', ' ', ' ', ' ', 'W', ' ', ' ', ' ', ' ', ' ', ' ' ],
+			[ ' ', ' ', ' ', ' ', ' ', 'S', ' ', ' ', ' ', ' ', ' ', ' ' ],
+			[ ' ', ' ', ' ', ' ', ' ', 'W', ' ', ' ', ' ', ' ', ' ', ' ' ],
+			[ 'W', 'W', 'S', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W' ],
+			[ ' ', ' ', ' ', ' ', ' ', ' ', 'W', ' ', ' ', ' ', ' ', 'K' ],
+			[ ' ', ' ', ' ', ' ', ' ', ' ', 'W', ' ', ' ', ' ', ' ', ' ' ],
+			[ ' ', ' ', ' ', ' ', ' ', ' ', 'W', ' ', ' ', ' ', ' ', ' ' ],
+			[ ' ', ' ', ' ', ' ', ' ', ' ', 'W', ' ', ' ', ' ', ' ', ' ' ],
+			[ ' ', ' ', ' ', ' ', ' ', ' ', 'W', ' ', ' ', ' ', ' ', ' ' ],
+			[ ' ', ' ', ' ', ' ', ' ', ' ', 'K', ' ', ' ', ' ', ' ', ' ' ] ];
 
 	let BINGO_5 = [ [ 'K', ' ', ' ', ' ', ' ', ' ', 'S', ' ', ' ', ' ', ' ', ' ', 'K' ],
 			[ ' ', ' ', ' ', ' ', ' ', 'W', 'W', 'W', ' ', ' ', ' ', ' ', ' ' ],
@@ -359,14 +315,14 @@ function getMapData() {
 			[ ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'K', 'W', 'K', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'K' ] ];
 
 	mapData['EMPTY'] = EMPTY;
+	mapData['EXIT'] = EXIT;
 	mapData['FUCK'] = FUCK;
 	mapData['TURNY'] = TURNY;
-	mapData['VALLEY'] = VALLEY;
 	mapData['CROSSCL'] = CROSSCL;
+	mapData['CROSSOP'] = CROSSOP;
+	mapData['VALLEY'] = VALLEY;
 	mapData['FOUR'] = FOUR;
 	mapData['RING'] = RING;
-	mapData['EXIT'] = EXIT;
-	mapData['CROSSOP'] = CROSSOP;
 
 	mapData['BINGO_1'] = BINGO_1;
 	mapData['BINGO_2'] = BINGO_2;

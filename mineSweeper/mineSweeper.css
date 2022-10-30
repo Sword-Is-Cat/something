@@ -17,19 +17,15 @@ ul, ol, li {
 }
 
 .bodyWrapper {
-	width: 100%; height: 100vh;
+	width: 100%; min-height: 100vh;
 }
 
 .bodyWrapper .contentsBody {
-	position: fixed; left: 300px; width: calc(100% - 300px); height: 100vh;
+	position: absolute; left: 300px; width: calc(100% - 300px); min-height: 100vh;
 }
 
 .bodyWrapper .contents {
-	padding: 30px; width: calc(100% - 60px); height: calc(100vh - 60px);
-}
-
-.bodyWrapper .contents.on {
-	backdrop-filter: blur(12px);
+	padding: 30px; width: calc(100% - 60px); min-height: calc(100vh - 60px);
 }
 
 .bodyWrapper .contents .iframeWrapper {
@@ -48,8 +44,24 @@ ul, ol, li {
 	left: 0; top: 0;
 }
 
+.bodyWrapper .contents .miniMapAll {
+	display: none;
+}
+
+.bodyWrapper .contents.on {
+	backdrop-filter: blur(12px);
+}
+
+.bodyWrapper .contents.maps .iframeWrapper, .bodyWrapper .contents.maps .miniMapWrapper {
+	display: none;
+}
+
+.bodyWrapper .contents.maps .miniMapAll {
+	display: block; width: 100%; height: 100%; margin: 0; padding: 0;
+}
+
 .bodyWrapper .lnb {
-	float: left; width: 300px; height: 100vh; backdrop-filter: contrast(0.2);
+	position: fixed; float: left; width: 300px; min-height: 100vh; backdrop-filter: contrast(0.2);
 }
 
 .bodyWrapper .lnb .lnbContent {
@@ -89,11 +101,27 @@ ul, ol, li {
 }
 
 .bodyWrapper div {
-	position: relative; width: 80%; min-height: 100px;
+	position: relative; width: 80%; /*min-height: 100px;*/
 }
 
 .bgVideo {
 	position: fixed; width: 100%;
+}
+
+.miniMapAll ul li {
+	display: inline-block; width: calc(33% - 15px); background-color: rgba(44,44,44,0.6); margin: 10px;
+}
+
+.miniMapAll ul li .mapTitle {
+	width: 100%; color:#dddddd; font-weight:bold; text-align: center; margin: 10px 0 5px;
+}
+
+.miniMapAll ul li .mapBody {
+	width: 94%; padding-bottom: 94%; margin: 3%;
+}
+
+.miniMapAll ul li .mapBody table {
+	position: absolute;
 }
 
 table.miniMap {
