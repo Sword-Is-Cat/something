@@ -99,6 +99,7 @@ function drawDataMenu(node, ul, depth) {
 
 function showMaps() {
 
+	document.querySelector('iframe').src = '';
 	document.querySelector('.contents').classList.add('on');
 	document.querySelector('.contents').classList.add('maps');
 
@@ -176,25 +177,25 @@ function drawMiniMap(type) {
 
 function drawAllminiMap(wrapper) {
 
+	const keys = [ 'EMPTY', 'EXIT', 'FUCK', 'TURNY', 'CROSSCL', 'CROSSOP', 'VALLEY', 'FOUR', 'RING' ];
+	const name = [ '허허벌판', '출구앞문', '고블린보너스', '누운Y', '닫힌십자가', '열린십자가', '능선', '4개의방', '나이테' ];
+
 	let $ul = appendElement('ul', wrapper);
 	let $li, $title, $body, $table;
 
-	Object.keys(mapData).forEach(function(key) {
+	for (let idx = 0; idx < keys.length; idx++) {
 
-		if (key.indexOf('BINGO') == -1) {
+		let key = keys[idx], text = name[idx];
 
-			$li = appendElement('li', $ul);
+		$li = appendElement('li', $ul);
 
-			$title = appendElement('div', $li, 'mapTitle');
-			$title.innerText = key;
+		$title = appendElement('div', $li, 'mapTitle');
+		$title.innerText = text;
 
-			$body = appendElement('div', $li, 'mapBody');
-			$table = appendElement('table', $body, 'miniMap');
-			drawOneMiniMap($table, mapData[key]);
-
-		}
-
-	});
+		$body = appendElement('div', $li, 'mapBody');
+		$table = appendElement('table', $body, 'miniMap');
+		drawOneMiniMap($table, mapData[key]);
+	}
 
 }
 
