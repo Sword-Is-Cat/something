@@ -97,11 +97,11 @@ table tbody tr td{
 	cursor: pointer;
 }
 
-table tbody tr td:nth-child(odd){
+table tbody.resultTableBody tr td:nth-child(odd){
 	border-width: 1px 0 1px 1px;
 }
 
-table tbody tr td:nth-child(even){
+table tbody.resultTableBody tr td:nth-child(even){
 	border-width: 1px 1px 1px 0;
 }
 
