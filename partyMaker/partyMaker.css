@@ -1,0 +1,145 @@
+@charset "UTF-8";
+
+body, html {
+	margin: 0; padding: 0; height: 100%;
+}
+
+body::-webkit-scrollbar {
+	display: none;
+}
+
+.bg-image {
+	background-image: url(./bg.png);
+	/* Full height */ height: 100%;
+	/* Center and scale the image nicely */ background-position: center; background-size: cover;
+}
+
+div.base {
+	width: 100%; min-height: 50px;
+}
+
+div.hide {
+	display: none;
+}
+
+div.title {
+	background-color: rgba(150, 150, 150, 0.1); min-height: 150px;
+}
+
+div.content {
+	background-color: rgba(150, 150, 150, 0.3); backdrop-filter: blur(12px); min-height: 20px; padding: 20px 0 20px 0;
+}
+
+div.footer {
+	padding: 20px 0 20px 0; background-color: rgba(150, 150, 150, 0.1);
+}
+
+div.content_wrapper {
+	width: 70%; margin: 0 15% 0 15%;
+}
+
+div.content_wrapper>div {
+	width: 80%; margin-top: 30px;
+}
+
+div.content_wrapper>div>div {
+	width: 100%; margin-top: 20px;
+}
+
+div.content_wrapper>div>div>p {
+	display: inline-block; margin: 5px 0;
+}
+
+div.content_wrapper>div>div, div.content_wrapper>div>textArea, div.content_wrapper>div>button, div.content_wrapper>div>details {
+	display: block; width: 90%;
+}
+
+div.content_wrapper>div>div.optionPanel {
+	height: 40px; border: 2px solid black; background-color: rgba(150, 150, 150, 0.4);
+}
+
+p {
+	width: 100%; margin: 0;
+}
+
+textArea.textArea {
+	min-height: 300px; margin: auto; resize: none; padding: 15px;
+}
+
+button.wideBtn {
+	height: 40px; margin: 15px auto 0;
+}
+
+details.details {
+	margin: auto;
+}
+
+details.details>summary {
+	font-size: 20px;
+}
+
+details.details>ul {
+	border: 2px solid black; background-color: rgba(255, 100, 100, 0.3);
+}
+
+details.details>ul>li {
+	font-size: 20px; padding: 5px 0 5px 0;
+}
+
+details.details>ul, details.details>ol, details.details>li {
+	list-style: none;
+}
+
+div.entryDiv>ul, div.entryDiv>ol, div.entryDiv>li {
+	list-style: none;
+}
+
+div.entryDiv>ul {
+	margin-block-start: 0em; margin-block-end: 0em; margin-inline-start: 0px; margin-inline-end: 0px; padding-inline-start: 0px;
+}
+
+div.entryDiv>ul>li {
+	width: 32%; min-height: 100px; margin: 0 0 6px 1%; border: 2px solid black; display: inline-block;
+}
+
+div.entryDiv>ul>li:nth-of-type(3n+1) {
+	margin-left: 0;
+}
+
+div.entryDiv>ul>li>div.entry {
+	width: 100%;
+}
+
+table.entryTable>tbody>tr>td {
+	cursor: auto;
+}
+
+table.entryTable>tbody>tr>td:has(input[type='checkbox']) {
+	cursor: pointer;
+}
+
+table.entryTable>tbody>tr>td>input[type='checkbox'] {
+	display: none;
+}
+
+table.entryTable>tbody>tr>td:has(input[type='checkbox']:checked ){
+	background-color: lightgreen;
+}
+
+table.resultTable>tbody>tr>td{
+}
+
+table.resultTable>tbody>tr>td>div{
+}
+
+table.resultTable>tbody>tr>td:has(div.driver){
+	background-color: gold;	
+}
+
+table.resultTable>tbody>tr>td:has(div.synergy){
+	background-color: lightgreen;
+}
+
+table.resultTable>tbody>tr>td.selected{
+	border: 1px solid red;
+}
