@@ -135,7 +135,7 @@ const synergyArr = ['소울', '넨마', '크루', '마도', '암제'];
 
 function parseText(text){
 	
-	let data = text.trim().split(/[^a-zA-Zㄱ-힣0-9. ]/g);
+	let data = text.replace('/',' ').trim().split(/[^a-zA-Zㄱ-힣0-9. ]/g);
 	data = data[data.length-1].trim();
 	if(!data)
 		return;
