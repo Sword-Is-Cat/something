@@ -132,7 +132,7 @@ function textToEntry(){
 }
 
 const synergyArr = ['소울', '넨마', '크루', '마도', '암제'];
-const allJobArr = [ '',
+const allJobArr = [ 
 	'웨펀', '검성', '소울', '다크로드','버섴', '헬벤', '헬벤터','버서커', '수라', '인다라천', '아수라', 
 	'넨마', '백화', '백화요란', '넨마스터', '스커', '챔피언', '스트라이커', 
 	'렌저', '데페', '데스페라도', '레인저', '런처', '블래', '블래스터', '메카', '마이스터', '메카닉', '스핏', '제너럴', '스핏파이어', 
@@ -149,7 +149,7 @@ function parseText(text){
 	if(!data)
 		return;
 	
-	let name1, name2, synergy = false, power;
+	let name1, name2, power;
 	let arr = data.trim().replace(/[^a-zA-Zㄱ-힣0-9.]+/g, ' ').split(' ');
 
 	arr.forEach(function(item){
@@ -174,22 +174,23 @@ function parseText(text){
 		
 		entryArea.classList.remove('hide');
 		optionArea.classList.remove('hide');
-		insertEntryCard(name1, name2, power, synergy);
+		insertEntryCard(name1, name2, power);
 	}else{
 		errorArea.classList.remove('hide');
-		appendElement('li', errList).innerText = data;
+		if(data.length > 5)
+			appendElement('li', errList).innerText = data;
 	}
 
 }
 
-function insertEntryCard(name1, name2, power, synergy){
+function insertEntryCard(name1, name2, power){
 	
-	let name, job;
+	let name, job, synergy = false;
 	
-	if(allJobArr.indexOf(name1)>0){
+	if(allJobArr.indexOf(name1)>-1){
 		name = name2;
 		job = name1;
-	}else if(allJobArr.indexOf(name2)>0){
+	}else if(allJobArr.indexOf(name2)>-1){
 		name = name1;
 		job = name2;
 	}else if(name1.length < name2.length){
@@ -204,6 +205,8 @@ function insertEntryCard(name1, name2, power, synergy){
 		if(job.indexOf(syJob)!=-1)
 			synergy = true;
 	});
+	
+	let alert = allJobArr.indexOf(job)==-1;
 	
 	while(power<10000)
 		power*=10;
@@ -246,7 +249,7 @@ function insertEntryCard(name1, name2, power, synergy){
 	// [3] 직업/시너지여부
 	tr = appendElement('tr', body);
 	appendElement('th', tr).innerText = '직업';
-	td = appendElement('td', tr);
+	td = appendElement('td', tr, alert?'alert':null);
 	input = appendElement('input', td, 'input_text w80');
 	input.type = 'text';
 	input.value = job;
