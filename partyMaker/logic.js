@@ -132,15 +132,24 @@ function textToEntry(){
 }
 
 const synergyArr = ['소울', '넨마', '크루', '마도', '암제'];
+const allJobArr = [ '',
+	'웨펀', '검성', '소울', '다크로드','버섴', '헬벤', '헬벤터','버서커', '수라', '인다라천', '아수라', 
+	'넨마', '백화', '백화요란', '넨마스터', '스커', '챔피언', '스트라이커', 
+	'렌저', '데페', '데스페라도', '레인저', '런처', '블래', '블래스터', '메카', '마이스터', '메카닉', '스핏', '제너럴', '스핏파이어', 
+	'엘마', '마도', '트릭', '트릭스터', '마도학자', 
+	'크루', '여크루', '에반젤린','남크루', '홀리오더', '크루세이더', '인파', '갓핸드', '인파이터', 
+	'소마', '노블', '노블레스', '소드마스터', '닼템', '암제', '다크', '다크템플러', '검마', '데슬', '데몬슬레이어', '베본', '검호', '베가', '베가본드', 
+	'와베', '데버스테이터', '와일드베인', '윈드', '마엘스트롬', '윈드시어'];
 
 function parseText(text){
 	
-	let data = text.replace('/',' ').trim().split(/[^a-zA-Zㄱ-힣0-9. ]/g);
+	text = text.replace(/\//g, ' ').replace(/￦/g, ' ').replace(/\\/g, ' ');
+	let data = text.trim().split(/[^a-zA-Zㄱ-힣0-9. ]/g);
 	data = data[data.length-1].trim();
 	if(!data)
 		return;
 	
-	let name, job, synergy = false, power;
+	let name1, name2, synergy = false, power;
 	let arr = data.trim().replace(/[^a-zA-Zㄱ-힣0-9.]+/g, ' ').split(' ');
 
 	arr.forEach(function(item){
@@ -152,8 +161,8 @@ function parseText(text){
 		} else {
 			if (item) {
 				
-				job = name;
-				name = item;
+				name2 = name1;
+				name1 = item.trim();
 				
 			}
 		}
@@ -161,14 +170,11 @@ function parseText(text){
 	});
 	
 	
-	if(name && job && power){
-		synergyArr.forEach(function(syJob){
-			if(job.indexOf(syJob)!=-1)
-				synergy = true;
-		});
+	if(name1 && name2 && power){
+		
 		entryArea.classList.remove('hide');
 		optionArea.classList.remove('hide');
-		insertEntryCard(name, job, power, synergy);
+		insertEntryCard(name1, name2, power, synergy);
 	}else{
 		errorArea.classList.remove('hide');
 		appendElement('li', errList).innerText = data;
@@ -176,7 +182,28 @@ function parseText(text){
 
 }
 
-function insertEntryCard(name, job, power, synergy){
+function insertEntryCard(name1, name2, power, synergy){
+	
+	let name, job;
+	
+	if(allJobArr.indexOf(name1)>0){
+		name = name2;
+		job = name1;
+	}else if(allJobArr.indexOf(name2)>0){
+		name = name1;
+		job = name2;
+	}else if(name1.length < name2.length){
+		name = name2;
+		job = name1;
+	}else{
+		name = name1;
+		job = name2;
+	}
+	
+	synergyArr.forEach(function(syJob){
+		if(job.indexOf(syJob)!=-1)
+			synergy = true;
+	});
 	
 	while(power<10000)
 		power*=10;
