@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>DNFM PartyMaker</title>
+</head>
+<link type="text/css" rel="stylesheet" href="default.css" />
+<body>
+    <div style="margin:0;">
+        <table id="dataTable">
+            <thead></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</body>
+<style>
+    .on {background-color: yellow;}
+</style>
+<script type="text/javascript">
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+        const st_lv = 30, ed_le = 50, st_sp = 300, ed_sp = 500;
+
+        const $thead = document.getElementById("dataTable").querySelector("thead");
+        let $tr, $td;
+        $tr = appendElement("tr", $thead);
+        appendElement("th", $tr);
+        for(let sp = st_sp ; sp<=ed_sp ; sp+=10){
+            $td = appendElement("th", $tr);
+            $td.classList.add("sp"+sp);
+            $td.innerText = sp;
+        }
+
+        const $tbody = document.getElementById("dataTable").querySelector("tbody");
+        for(let lv = 30 ; lv<=50 ; lv++){
+            $tr = appendElement("tr", $tbody);
+            $td = appendElement("th", $tr);
+            $td.classList.add("lv"+lv);
+            $td.innerText = lv;
+            for(let sp = 300 ; sp<=500 ; sp+=10){
+                $td = appendElement("td", $tr);
+                let time = (((9.7+(0.3*lv)) * (100+sp))|0) / 100;
+                $td.innerText = time;
+                if(time>=120)
+                $td.classList.add("on");
+                $td.classList.add("lv"+lv);
+                $td.classList.add("sp"+sp);
+            }
+        }
+    });
+
+    const appendElement = (tagName, parent) => {
+        let element = document.createElement(tagName);
+        if(parent)
+            parent.appendChild(element);
+        return element;
+    }
+</script>
+</html>
