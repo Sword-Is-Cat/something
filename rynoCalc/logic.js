@@ -1,8 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const st_lv = 30, ed_lv = 60, st_sp = 300, ed_sp = 600;
+    drawTable();
 
-    const $thead = document.getElementById("dataTable").querySelector("thead");
+});
+
+const drawTable = (st_lv, ed_lv, st_sp, ed_sp) => {
+    st_lv = st_lv || 30;
+    ed_lv = ed_lv || 50;
+    st_sp = st_sp || 300;
+    ed_sp = ed_sp || 500;
+    /** table 초기화 */
+    const $table = document.getElementById("dataTable");
+    while($table.children.length>0)
+        $table.removeChild($table.children[0]);
+    /** thead 셋팅 */
+    const $thead = appendElement("thead", $table);
     let $tr, $td;
     $tr = appendElement("tr", $thead);
     appendElement("th", $tr);
@@ -11,8 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
         $td.classList.add("sp"+sp);
         $td.innerText = sp;
     }
-
-    const $tbody = document.getElementById("dataTable").querySelector("tbody");
+    /** tbody data insert */
+    const $tbody = appendElement("tbody", $table);
     for(let lv = st_lv ; lv<=ed_lv ; lv++){
         $tr = appendElement("tr", $tbody);
         $td = appendElement("th", $tr);
@@ -28,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
             $td.classList.add("sp"+sp);
         }
     }
-});
+}
 
 const appendElement = (tagName, parent) => {
     let element = document.createElement(tagName);
