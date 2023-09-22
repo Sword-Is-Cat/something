@@ -15,21 +15,23 @@ const drawTable = (st_lv, ed_lv, st_sp, ed_sp) => {
         $table.removeChild($table.children[0]);
     /** thead 셋팅 */
     const $thead = appendElement("thead", $table);
-    let $tr, $td;
+    let $tr, $th, $td;
     $tr = appendElement("tr", $thead);
     appendElement("th", $tr);
     for(let sp = st_sp ; sp<=ed_sp ; sp+=10){
-        $td = appendElement("th", $tr);
-        $td.classList.add("sp"+sp);
-        $td.innerText = sp;
+        $th = appendElement("th", $tr);
+        $th.classList.add("sp"+sp);
+        $th.innerText = sp;
+        addCustomClickEvent($th, "cSelect");
     }
     /** tbody data insert */
     const $tbody = appendElement("tbody", $table);
     for(let lv = st_lv ; lv<=ed_lv ; lv++){
         $tr = appendElement("tr", $tbody);
-        $td = appendElement("th", $tr);
-        $td.classList.add("lv"+lv);
-        $td.innerText = lv;
+        $th = appendElement("th", $tr);
+        $th.classList.add("lv"+lv);
+        $th.innerText = lv;
+        addCustomClickEvent($th, "rSelect");
         for(let sp = st_sp ; sp<=ed_sp ; sp+=10){
             $td = appendElement("td", $tr);
             let time = (((9.7+(0.3*lv)) * (100+sp))|0) / 100;
@@ -40,6 +42,14 @@ const drawTable = (st_lv, ed_lv, st_sp, ed_sp) => {
             $td.classList.add("sp"+sp);
         }
     }
+}
+
+const addCustomClickEvent = (element, className) => {
+    element.addEventListener("click", () =>{
+        const myClassName = element.className;
+        Array.from(document.querySelectorAll("."+className)).forEach(e => e.classList.remove(className));
+        Array.from(document.querySelectorAll("."+myClassName)).forEach(e => e.classList.add(className));
+    });
 }
 
 const appendElement = (tagName, parent) => {
