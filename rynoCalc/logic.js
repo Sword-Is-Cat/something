@@ -4,11 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-const drawTable = (st_lv, ed_lv, st_sp, ed_sp) => {
-    st_lv = st_lv || 30;
-    ed_lv = ed_lv || 50;
-    st_sp = st_sp || 300;
-    ed_sp = ed_sp || 500;
+const drawTable = (st_lv, st_sp) => {
+    st_lv = st_lv || 40;
+    st_sp = st_sp || 350;
+    const step = 5;
     /** table 초기화 */
     const $table = document.getElementById("dataTable");
     while($table.children.length>0)
@@ -18,21 +17,22 @@ const drawTable = (st_lv, ed_lv, st_sp, ed_sp) => {
     let $tr, $th, $td;
     $tr = appendElement("tr", $thead);
     appendElement("th", $tr);
-    for(let sp = st_sp ; sp<=ed_sp ; sp+=10){
+    for(let i = 0, sp = st_sp ; i<=20 ; i++, sp+=step){
         $th = appendElement("th", $tr);
         $th.classList.add("sp"+sp);
         $th.innerText = sp;
         addCustomClickEvent($th, "cSelect");
+        
     }
     /** tbody data insert */
     const $tbody = appendElement("tbody", $table);
-    for(let lv = st_lv ; lv<=ed_lv ; lv++){
+    for(let i = 0, lv = st_lv ; i<=20 ; i++, lv++){
         $tr = appendElement("tr", $tbody);
         $th = appendElement("th", $tr);
         $th.classList.add("lv"+lv);
         $th.innerText = lv;
         addCustomClickEvent($th, "rSelect");
-        for(let sp = st_sp ; sp<=ed_sp ; sp+=10){
+        for(let j = 0, sp = st_sp ; j<=20 ; j++, sp+=step){
             $td = appendElement("td", $tr);
             let time = (((9.7+(0.3*lv)) * (100+sp))|0) / 100;
             $td.innerText = time;
