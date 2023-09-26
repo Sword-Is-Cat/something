@@ -13,8 +13,8 @@ const defaultSp = 350;
 const submitBtnEvent = (btnId) => {
     const btn = document.getElementById(btnId);
     btn.addEventListener("click", () => {
-        const lvVal = document.getElementById("inputLevel").value;
-        const spVal = document.getElementById("inputSkill").value;
+        let lvVal = document.getElementById("inputLevel").value;
+        let spVal = document.getElementById("inputSkill").value;
         if(isNaN(Number(lvVal))){
             lvVal = defaultLv;
             document.getElementById("inputLevel").value = defaultLv;
