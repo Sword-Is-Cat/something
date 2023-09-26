@@ -1,3 +1,11 @@
 @charset "UTF-8";
-table :is(thead, tbody) tr :is(th, td).rSelect {box-shadow: 0 0 0 2px #ff0000 inset;}
-table :is(thead, tbody) tr :is(th, td).cSelect {box-shadow: 0 0 0 2px #ff0000 inset;}
+
+.on { background-color: yellow; } 
+table :is(thead, tbody) tr :is(th, td).rSelect { box-shadow: 0 0 0 2px #ff0000 inset; } 
+table :is(thead, tbody) tr :is(th, td).cSelect { box-shadow: 0 0 0 2px #ff0000 inset; } 
+table :is(thead, tbody) tr th { cursor: pointer; } 
+table thead tr th:first-child { cursor: auto; } 
+
+.formInner { min-height: 30px; padding:10px; } 
+
+.inputText {min-height: :20px;}
