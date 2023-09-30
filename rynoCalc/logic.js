@@ -23,8 +23,9 @@ const submitBtnEvent = (btnId) => {
             spVal = defaultSp;
             document.getElementById("inputSkill").value = defaultSp;
         }
-        if(spVal%5>0){
+        if(spVal%5>0 || spVal > 400){
             spVal -= spVal%5;
+            spVal = Math.min(spVal, 400);
             document.getElementById("inputSkill").value = spVal;
         }
         drawTable(Number(lvVal), Number(spVal));
