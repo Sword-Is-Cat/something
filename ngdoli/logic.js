@@ -113,50 +113,48 @@ const drawMaterialTable = () => {
     text_zone.innerText = '';
     let $tr, $td, $p, flag = true, textFlag = true;
     for (var i = 0; i < stuffName.length; i++) {
-        if (stuffCnts[i] > 0) {
-            if (flag) {
-                $tr = document.createElement('tr');
-            }
-            flag = !flag;
-            material_table.appendChild($tr);
-
-            $td = document.createElement('td');
-            $tr.appendChild($td);
-            $p = document.createElement('p');
-            $p.style.paddingLeft = '5%';
-            $td.appendChild($p);
-            $p.innerText = stuffName[i];
-
-            $td = document.createElement('td');
-            $td.style.width = '5%';
-            $tr.appendChild($td);
-            $p = document.createElement('p');
-            $p.className = 'tcenter';
-            $td.appendChild($p);
-            $p.innerText = stuffCnts[i];
-
-            $td = document.createElement('td');
-            $td.style.width = '5%';
-            $tr.appendChild($td);
-            $p = document.createElement('p');
-            $td.appendChild($p);
-            if (Object.keys(materials).indexOf(stuffName[i]) != -1) {
-                let itemName = stuffName[i];
-                $td.addEventListener('click', () => {
-                    toStuffs(materials, itemName);
-                    window.scrollTo(0, document.body.scrollHeight);
-                });
-                $td.className = 'stuff_button';
-                $p.innerText = '재료보기';
-            }
-
-            if (textFlag) {
-                textFlag = false;
-            } else {
-                text_zone.innerText += ', ';
-            }
-            text_zone.innerText += stuffName[i] + ':' + stuffCnts[i];
-
+        if (flag) {
+            $tr = document.createElement('tr');
         }
+        flag = !flag;
+        material_table.appendChild($tr);
+
+        $td = document.createElement('td');
+        $tr.appendChild($td);
+        $p = document.createElement('p');
+        $p.style.paddingLeft = '5%';
+        $td.appendChild($p);
+        $p.innerText = stuffName[i];
+
+        $td = document.createElement('td');
+        $td.style.width = '5%';
+        $tr.appendChild($td);
+        $p = document.createElement('p');
+        $p.className = 'tcenter';
+        $td.appendChild($p);
+        $p.innerText = stuffCnts[i];
+
+        $td = document.createElement('td');
+        $td.style.width = '5%';
+        $tr.appendChild($td);
+        $p = document.createElement('p');
+        $td.appendChild($p);
+        if (Object.keys(materials).indexOf(stuffName[i]) != -1) {
+            let itemName = stuffName[i];
+            $td.addEventListener('click', () => {
+                toStuffs(materials, itemName);
+                window.scrollTo(0, document.body.scrollHeight);
+            });
+            $td.className = 'stuff_button';
+            $p.innerText = '재료보기';
+        }
+
+        if (textFlag) {
+            textFlag = false;
+        } else {
+            text_zone.innerText += ', ';
+        }
+        text_zone.innerText += stuffName[i] + ':' + stuffCnts[i];
+
     }
 };
