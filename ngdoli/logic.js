@@ -149,12 +149,14 @@ const drawMaterialTable = () => {
             $p.innerText = '재료보기';
         }
 
-        if (textFlag) {
-            textFlag = false;
-        } else {
-            text_zone.innerText += ', ';
+        if (stuffCnts[i] > 0) {
+            if (textFlag) {
+                textFlag = false;
+            } else {
+                text_zone.innerText += ', ';
+            }
+            text_zone.innerText += stuffName[i] + ':' + stuffCnts[i];
         }
-        text_zone.innerText += stuffName[i] + ':' + stuffCnts[i];
 
     }
 };
