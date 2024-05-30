@@ -8,4 +8,4 @@ table thead tr th:first-child { cursor: auto; }
 
 .formInner { min-height: 30px; padding:10px; } 
 
-.inputText {min-height: :20px;}
+.inputText {min-height: 20px;}

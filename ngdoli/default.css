@@ -1,0 +1,17 @@
+@charset "UTF-8";
+.body_wrapper {width: 80%; height: 100%;margin:auto;}
+.section{margin-top: 15px; }
+.header{font-size: 50px; text-align: center;}
+.tailer{height:100px;}
+
+.tcenter{text-align: center;}
+div p{margin:0;}
+
+table{width:100%; border: 2px solid black;border-collapse: collapse;}
+table tr th, table tr td{width:25%; height: 30px;border: 1px solid black;}
+
+pre{white-space: pre-wrap;}
+
+#weapone_table p, #armor_table p{text-align: center;}
+#weapone_table tbody td:hover, #armor_table tbody td:hover, .stuff_button:hover{ cursor: pointer;background-color: aqua;}
+.stuff_button{text-align: center;}
