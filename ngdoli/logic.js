@@ -139,7 +139,7 @@ const drawMaterialTable = () => {
         $tr.appendChild($td);
         $p = document.createElement('p');
         $td.appendChild($p);
-        if (Object.keys(materials).indexOf(stuffName[i]) != -1) {
+        if (Object.keys(materials).indexOf(stuffName[i]) != -1 && stuffCnts[i] > 0) {
             let itemName = stuffName[i];
             $td.addEventListener('click', () => {
                 toStuffs(materials, itemName);
